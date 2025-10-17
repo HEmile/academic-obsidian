@@ -11,13 +11,15 @@ aliases:
   - increasing
   - decreasing
   - monotone
+  - monotonicity
 hasTopic:
   - "[[mathematics]]"
+isA:
+  - "[[function]]"
 ---
 
-
 ## Definition
-A function $P\rightarrow Q$ between two partially ordered sets (eg: numbers!) is monotone iff for all $a, b\in P$, $a\leq b$ implies $f(a)\leq f(b)$. 
+A function $P\rightarrow Q$ between two [[partially ordered set]]s (eg: numbers!) is monotone iff for all $a, b\in P$, $a\leq b$ implies $f(a)\leq f(b)$. 
 
 --- 
 #concept

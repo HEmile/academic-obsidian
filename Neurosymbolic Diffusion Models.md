@@ -14,7 +14,8 @@ author:
   - "[[Pasquale Minervini]]"
   - "[[Edoardo Ponti]]"
   - "[[Antonio Vergari]]"
-project: []
+project:
+  - "[[Expressiveness in Neurosymbolic Learning|Expressive NeSy]]"
 publishedIn: "[[NeurIPS]]"
 citeKey: vankriekenNeurosymbolicDiffusionModels2025
 zoteroUri: zotero://select/items/@vankriekenNeurosymbolicDiffusionModels2025

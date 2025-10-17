@@ -3,6 +3,7 @@ aliases:
   - RSs
 subset:
   - "[[neurosymbolic learning]]"
+  - "[[identifiable|identifiability]]"
 Created: "[[17-10-2025]]"
 ---
 This is when in typical NeSy predictor setups, a NeSy predictor properly learned the input-output problem (to 100% accuracy), but did not learn the proper concept extractor. Happens because the problem is not [[identifiable]]

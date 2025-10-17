@@ -10,7 +10,8 @@ author:
   - "[[Stefano Teso]]"
   - "[[Antonio Vergari]]"
   - "[[Andrea Passerini]]"
-project: []
+project:
+  - "[[Expressiveness in Neurosymbolic Learning|Expressive NeSy]]"
 publishedIn: "[[NeurIPS]]"
 citeKey: marconato2023neurosymbolicconceptscreatedequal
 zoteroUri: zotero://select/items/@marconato2023neurosymbolicconceptscreatedequal

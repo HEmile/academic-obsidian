@@ -1,22 +1,23 @@
 ---
 aliases:
-- "triangular subnorm"
-- "triangular norm"
-- "t-subnorm"
-- "idempotent element"
-- "nilpotent element"
-- "zero divisor"
+  - triangular subnorm
+  - triangular norm
+  - t-subnorm
+  - idempotent element
+  - nilpotent element
+  - zero divisor
 isA:
-- "[[fuzzy operators]]"
-- "[[associative]]"
-- "[[ordered semigroup]]"
+  - "[[fuzzy operators]]"
+  - "[[associative]]"
+  - "[[ordered semigroup]]"
+  - "[[monotone function]]"
 ---
 	
 > [!definition]
 > Axioms: $T: [0, 1]^2 \rightarrow [0, 1]$
 > - [[commutative|commutativity]] $T(x, y)=T(y, x)$
 > - [[associative]]
-> - [[monotonicity]]
+> - [[monotone function]]
 > - Boundary: $T(x, 1)=x$
 
 Implies: $T(x, 0) = 0$, $T(x, y) \leq \min(x, y)$. 
