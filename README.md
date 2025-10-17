@@ -4,3 +4,6 @@ I've been using Obsidian for 5 years now (early adopter!) for academic research,
 The philosophy behind my approach comes from the idea of [knowledge graphs](https://en.wikipedia.org/wiki/Knowledge_graph). Notes are quite structured and atomic to prevent duplication and to optimize for retrieval. However, I also did my best to minimize the overhead for adding this structure. 
 
 If you want to learn about this approach, please read the accompanying blog post at (TODO).
+
+**Installing this template**
+Well, that couldn't be easier! Just download/clone this repo, and open Obsidian on this folder. Merging it with your active setup is a lot trickier though. You'd need to compare in particular the active plugins and appearance snippets. 
