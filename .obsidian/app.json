@@ -7,5 +7,7 @@
   "attachmentFolderPath": "Files",
   "userIgnoreFilters": [
     "Templates/"
-  ]
+  ],
+  "alwaysUpdateLinks": true,
+  "promptDelete": false
 }

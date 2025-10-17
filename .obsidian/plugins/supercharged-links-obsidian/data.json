@@ -1,0 +1,20 @@
+{
+  "targetAttributes": [
+    "photo",
+    "a property with a space",
+    "year",
+    "score",
+    "publishedIn"
+  ],
+  "targetTags": true,
+  "getFromInlineField": false,
+  "enableTabHeader": true,
+  "activateSnippet": true,
+  "enableEditor": true,
+  "enableFileList": true,
+  "enableBacklinks": true,
+  "enableQuickSwitcher": true,
+  "enableSuggestor": true,
+  "enableBases": true,
+  "selectors": []
+}

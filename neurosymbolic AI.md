@@ -1,5 +1,5 @@
 ---
-aliases: 
+aliases:
   - neural-symbolic
   - neuro-symbolic
   - neural-symbolic AI
@@ -7,7 +7,6 @@ aliases:
   - Learning and Reasoning
   - neuro-symbolic computing
   - neuro-symbolic integration
-  - neurosymbolic learning
 subset:
   - "[[machine learning]]"
   - "[[symbolic AI]]"

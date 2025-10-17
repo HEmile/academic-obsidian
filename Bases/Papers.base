@@ -1,0 +1,43 @@
+summaries:
+  Filled: values.filter(!value.isType("null")).length
+  Empty: values.filter(value.isType("null")).length
+  Unique: values.unique().length
+filters:
+  and:
+    - file.tags.contains("#source/paper")
+formulas:
+  Topics: file.properties.hasTopic
+views:
+  - type: table
+    name: All papers
+    order:
+      - file.name
+      - author
+      - hasTopic
+    sort:
+      - property: author
+        direction: ASC
+    summaries:
+      hasTopic: Filled
+    columnSize:
+      file.name: 231
+      note.author: 268
+    rowHeight: medium
+  - type: table
+    name: NeSy
+    filters:
+      and:
+        - hasTopic.containsAny(link("neurosymbolic AI"), link("differentiable fuzzy logics"), link("differentiable probabilistic logics"), link("learning with algorithms"), link("learning with constraints"))
+    order:
+      - file.name
+      - hasTopic
+      - author
+      - year
+    sort:
+      - property: year
+        direction: DESC
+    rowHeight: medium
+    columnSize:
+      file.name: 363
+      note.hasTopic: 440
+      note.author: 280
