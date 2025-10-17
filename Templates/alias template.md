@@ -1,0 +1,4 @@
+---
+aliases:
+- "<%tp.file.cursor()%>"
+---

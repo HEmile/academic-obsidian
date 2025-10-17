@@ -1,0 +1,150 @@
+/*[data-link-tags*="#project" i] > a,*/
+[data-link-tags*="#project" i]{
+    color: red !important;
+    text-decoration: none !important;
+}
+
+/*[data-link-tags*="#topic" i] > a,*/
+[data-link-tags*="#topic" i]{
+    color: #ff6600 !important;
+    text-decoration: none !important;
+}
+
+[data-link-tags*="#code" i] {
+    color: #326e0e !important;
+}
+
+/*[data-link-tags*="#method" i] > a,*/
+/*[data-link-tags*="#concept" i] > a,*/
+[data-link-tags*="#method" i],
+[data-link-tags*="#concept" i]{
+    color: #5cb527 !important;
+    text-decoration: none !important;
+}
+
+.cm-hmd-internal-link {
+    text-decoration: none !important;
+}
+
+.cm-underline {
+    text-decoration: underline;
+}
+
+[data-link-tags*="#author" i] > .cm-underline,
+[data-link-tags*="#topic" i] > .cm-underline,
+[data-link-tags*="#method" i] > .cm-underline,
+[data-link-tags*="#concept" i] > .cm-underline {
+    text-decoration: none !important;
+}
+
+[data-link-tags*="#institution" i],
+[data-link-tags*="#venue" i],
+[data-link-tags*="#author" i]{
+    color: black !important;
+}
+
+[data-link-tags*="#source" i] {
+    color: #32b2d7 !important;
+}
+
+
+/*a.internal-link[data-link-tags *="concept"],*/
+/*.cm-hmd-internal-link > [data-link-tags *="concept"]{*/
+/*    visibility: hidden !important;*/
+/*    display: none;*/
+/*}*/
+
+.data-link-icon[data-link-tags*="#concept" i]::before{
+    content: "⭐️ "
+}
+
+.data-link-icon[data-link-tags*="paper" i]::before{
+    content: "📄 "
+}
+
+.data-link-icon-after[data-link-score]:not([data-link-score=null])::after {
+    content: " (" attr(data-link-score) ")";
+}
+
+.data-link-icon-after[data-link-year]:not([data-link-year=null])::after {
+    content: " (" attr(data-link-year) ")";
+}
+
+.data-link-icon-after[data-link-year][data-link-publishedIn]:not([data-link-year=null]):not([data-link-publishedIn=null])::after {
+    content: " (" attr(data-link-publishedIn) " " attr(data-link-year) ")";
+}
+
+.data-link-icon[data-link-tags*="talk" i]::before{
+    content: "🗣️ "
+}
+
+.data-link-icon[data-link-tags*="#method" i]::before{
+    content: "⚒️ "
+}
+
+.data-link-icon[data-link-tags*="language" i]::before{
+    content: "🌐 "
+}
+
+.data-link-icon[data-link-tags*="#institution" i]::before{
+    content: "🏛️ "
+}
+
+.data-link-icon[data-link-tags*="#venue" i]::before{
+    content: "🤝 "
+}
+
+.data-link-icon[data-link-tags*="problem" i]::before{
+    content: "❓ "
+}
+
+.data-link-icon[data-link-tags*="dataset" i]::before{
+    content: "📊 "
+}
+
+.data-link-icon[data-link-tags*="code" i]::before{
+    content: "🧑‍💻 "
+}
+
+.data-link-icon[data-link-tags*="code/library" i]::before{
+    content: "‍🧰 "
+}
+
+.data-link-icon[data-link-tags*="project/idea" i]::before{
+    content: "💡 "
+}
+
+.data-link-icon[data-link-emoji]::before {
+    content: attr(data-link-emoji);
+}
+
+[data-link-color] {
+    color: var(--data-link-color) !important;
+}
+
+/* Used in the editor */
+.data-link-icon[data-link-photo^="https" i]:empty {
+    width: 1.2em;
+    height: 1.2em;
+    display: inline-block;
+    vertical-align: middle;
+    background-image: var(--data-link-photo);
+    background-size: cover;
+    box-shadow: 0 1px 4px #0008;
+    border-radius: 50%;
+    margin: -0.5em 0.2em -0.5em 0;
+}
+
+/* Used outside the editor -- for example, in search results, tabs, etc. */
+.data-link-icon[data-link-photo^="https" i]:not(:empty)::before {
+    content: '';
+    width: 1.2em;
+    height: 1.2em;
+    display: inline-block;
+    vertical-align: middle;
+    background-image: var(--data-link-photo);
+    background-size: cover;
+    box-shadow: 0 1px 2px #0008;
+    border-radius: 50%;
+    margin: -0.5em 0.2em -0.5em 0;
+}

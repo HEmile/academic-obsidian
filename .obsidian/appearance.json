@@ -1,0 +1,8 @@
+{
+  "cssTheme": "Minimal",
+  "accentColor": "#6a9575",
+  "enabledCssSnippets": [
+    "supercharged-links-gen",
+    "supercharged-links"
+  ]
+}

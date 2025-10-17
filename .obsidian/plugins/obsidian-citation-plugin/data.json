@@ -1,0 +1,9 @@
+{
+  "citationExportFormat": "biblatex",
+  "literatureNoteTitleTemplate": "{{title}}",
+  "literatureNoteFolder": "",
+  "literatureNoteContentTemplate": "---\naliases: [{{citekey}}]\nyear: {{year}}\nannotation-target: \nhasTopic: []\nauthor: [{{#each entry.author}}\"[[{{this.given}} {{this.family}}]]\"{{#unless @last}}, {{/unless}}{{/each}}]\nproject: []\npublishedIn: \nciteKey: {{citekey}}\nzoteroUri: {{zoteroSelectURI}}\nurl: {{URL}}\n---\n\n{{#if abstract}}\n> [!abstract]-\n> {{abstract}}\n{{/if}}\n\n--- \n#source/paper",
+  "markdownCitationTemplate": "[@{{citekey}}]",
+  "alternativeMarkdownCitationTemplate": "@{{citekey}}",
+  "citationExportPath": "/Users/emile/Library/CloudStorage/SynologyDrive-Emile/work/literature/zotero.bib"
+}

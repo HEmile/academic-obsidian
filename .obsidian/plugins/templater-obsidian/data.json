@@ -1,0 +1,56 @@
+{
+  "command_timeout": 5,
+  "templates_folder": "Templates",
+  "templates_pairs": [
+    [
+      "{{title}}",
+      "echo \"{{note_title}}\""
+    ],
+    [
+      "{{date}}",
+      "date +\"%d-%m-%Y\""
+    ],
+    [
+      "{{day_after}}",
+      "date -jf \"%d-%m-%Y\" -v+1d  \"{{note_title}}\" +\"%d-%m-%Y\""
+    ],
+    [
+      "{{title_url}}",
+      "input=\"{{note_title}}\"; input2=${input//&/%26};  echo ${input2// /%20}"
+    ],
+    [
+      "{{time}}",
+      "date +\"%H:%M\""
+    ]
+  ],
+  "trigger_on_file_creation": true,
+  "auto_jump_to_cursor": true,
+  "enable_system_commands": false,
+  "shell_path": "",
+  "user_scripts_folder": "",
+  "enable_folder_templates": true,
+  "folder_templates": [
+    {
+      "folder": "",
+      "template": ""
+    }
+  ],
+  "enable_file_templates": false,
+  "file_templates": [
+    {
+      "regex": ".*",
+      "template": ""
+    }
+  ],
+  "syntax_highlighting": true,
+  "syntax_highlighting_mobile": false,
+  "enabled_templates_hotkeys": [
+    ""
+  ],
+  "startup_templates": [
+    ""
+  ],
+  "empty_file_template": "",
+  "template_folder": "Templates",
+  "locale": "en"
+}
