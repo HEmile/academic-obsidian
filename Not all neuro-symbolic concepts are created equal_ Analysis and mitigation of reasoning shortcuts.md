@@ -16,7 +16,7 @@ citeKey: marconato2023neurosymbolicconceptscreatedequal
 zoteroUri: zotero://select/items/@marconato2023neurosymbolicconceptscreatedequal
 url: https://arxiv.org/abs/2305.19951
 ---
-
+![[Pasted image 20251017113420.png]]
 
 --- 
 #source/paper

@@ -18,6 +18,18 @@
                   "eState": "{}"
                 },
                 {
+                  "title": "Not all neuro-symbolic concepts are created equal_ Analysis and mitigation of reasoning shortcuts",
+                  "icon": "lucide-file",
+                  "state": "{\"type\":\"markdown\",\"state\":{\"file\":\"Not all neuro-symbolic concepts are created equal_ Analysis and mitigation of reasoning shortcuts.md\",\"mode\":\"source\",\"source\":false,\"backlinks\":true,\"backlinkOpts\":{\"collapseAll\":false,\"extraContext\":false,\"sortOrder\":\"alphabetical\",\"showSearch\":false,\"searchQuery\":\"\",\"backlinkCollapsed\":false,\"unlinkedCollapsed\":true}},\"icon\":\"lucide-file\",\"title\":\"Not all neuro-symbolic concepts are created equal_ Analysis and mitigation of reasoning shortcuts\"}",
+                  "eState": "{\"cursor\":{\"from\":{\"line\":18,\"ch\":36},\"to\":{\"line\":18,\"ch\":36}},\"scroll\":13.941455696202532}"
+                },
+                {
+                  "title": "reasoning shortcuts",
+                  "icon": "lucide-file",
+                  "state": "{\"type\":\"markdown\",\"state\":{\"file\":\"reasoning shortcuts.md\",\"mode\":\"source\",\"source\":false,\"backlinks\":true,\"backlinkOpts\":{\"collapseAll\":false,\"extraContext\":false,\"sortOrder\":\"alphabetical\",\"showSearch\":false,\"searchQuery\":\"\",\"backlinkCollapsed\":false,\"unlinkedCollapsed\":true}},\"icon\":\"lucide-file\",\"title\":\"reasoning shortcuts\"}",
+                  "eState": "{\"cursor\":{\"from\":{\"line\":9,\"ch\":51},\"to\":{\"line\":9,\"ch\":51}}}"
+                },
+                {
                   "title": "Expressiveness in Neurosymbolic Learning",
                   "icon": "lucide-file",
                   "state": "{\"type\":\"markdown\",\"state\":{\"file\":\"Expressiveness in Neurosymbolic Learning.md\",\"mode\":\"source\",\"source\":false,\"backlinks\":true,\"backlinkOpts\":{\"collapseAll\":false,\"extraContext\":false,\"sortOrder\":\"alphabetical\",\"showSearch\":false,\"searchQuery\":\"\",\"backlinkCollapsed\":false,\"unlinkedCollapsed\":true}},\"icon\":\"lucide-file\",\"title\":\"Expressiveness in Neurosymbolic Learning\"}",
@@ -70,7 +82,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "reasoning shortcuts.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -85,40 +97,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "reasoning shortcuts"
-            }
-          },
-          {
-            "id": "de4617fe8bbf8db7",
-            "type": "leaf",
-            "pane-relief:history-v1": {
-              "pos": 0,
-              "stack": [
-                {
-                  "state": "{}",
-                  "eState": "{}"
-                }
-              ]
-            },
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Not all neuro-symbolic concepts are created equal_ Analysis and mitigation of reasoning shortcuts.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Not all neuro-symbolic concepts are created equal_ Analysis and mitigation of reasoning shortcuts"
+              "title": "README"
             }
           }
         ]
@@ -358,6 +337,7 @@
   "active": "3af24f8373ae8605",
   "lastOpenFiles": [
     "Not all neuro-symbolic concepts are created equal_ Analysis and mitigation of reasoning shortcuts.md",
+    "Files/Pasted image 20251017113420.png",
     "reasoning shortcuts.md",
     "Expressiveness in Neurosymbolic Learning.md",
     "Bases/Ideas.base",
@@ -385,7 +365,6 @@
     "neurosymbolic AI.md",
     "neurosymbolic learning.md",
     "NeurIPS.md",
-    "University of Amsterdam.md",
     "Files/Pasted image 20251017110835.png",
     "Files/Pasted image 20251017110208.png",
     "preamble.sty",
