@@ -1290,7 +1290,7 @@ class SuperchargedLinks extends obsidian.Plugin {
             });
             // Initialization
             this.registerEvent(this.app.workspace.on("window-open", (window, win) => this.initModalObservers(this, window.getContainer().doc)));
-            // Update when
+            // Update when 
             // Debounced to prevent lag when writing
             this.registerEvent(this.app.metadataCache.on('changed', obsidian.debounce(updateLinks, 500, true)));
             // Update when layout changes
@@ -1306,7 +1306,7 @@ class SuperchargedLinks extends obsidian.Plugin {
         });
     }
     initViewObservers(plugin) {
-        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y;
+        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z, _0, _1;
         // Reset observers
         plugin.observers.forEach(([observer, type]) => {
             observer.disconnect();
@@ -1365,6 +1365,10 @@ class SuperchargedLinks extends obsidian.Plugin {
             // TODO: No proper unloading!
         }
         plugin.registerViewType('file-properties', plugin, 'div.internal-link > .multi-select-pill-content');
+        if ((_1 = (_0 = (_z = plugin.app) === null || _z === void 0 ? void 0 : _z.plugins) === null || _0 === void 0 ? void 0 : _0.plugins) === null || _1 === void 0 ? void 0 : _1['notebook-navigator']) {
+            plugin.registerViewType('notebook-navigator', plugin, 'span.nn-shortcut-label');
+            plugin.registerViewType('notebook-navigator', plugin, 'div.nn-file-name');
+        }
     }
     initModalObservers(plugin, doc) {
         const config = {
