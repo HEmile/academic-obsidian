@@ -16,7 +16,7 @@ author:
   - "[[Andrea Passerini]]"
   - "[[Stefano Teso]]"
 project: []
-publishedIn:
+publishedIn: "[[UAI]]"
 citeKey: marconato2024bearsmakeneurosymbolicmodels
 zoteroUri: zotero://select/items/@marconato2024bearsmakeneurosymbolicmodels
 url: https://arxiv.org/abs/2402.12240

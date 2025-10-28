@@ -1,27 +1,30 @@
 {
   "startView": "navigation",
   "showTooltips": false,
+  "showTooltipPath": true,
+  "dualPaneBackground": "separate",
   "homepage": null,
   "mobileHomepage": null,
   "useMobileHomepage": false,
   "autoRevealActiveFile": false,
   "autoRevealIgnoreRightSidebar": true,
-  "autoSelectFirstFileOnFocusChange": false,
   "fileVisibility": "documents",
   "excludedFolders": [],
   "excludedFiles": [],
   "dateFormat": "d MMM, yyyy",
   "timeFormat": "h:mm a",
+  "autoSelectFirstFileOnFocusChange": false,
   "navigationBanner": null,
   "showShortcuts": true,
   "showRecentNotes": true,
-  "recentNotesCount": 5,
+  "recentNotesCount": 10,
   "autoExpandFoldersTags": false,
   "collapseBehavior": "all",
   "smartCollapse": true,
   "showIcons": true,
   "colorIconOnly": false,
   "showNoteCount": true,
+  "separateNoteCounts": true,
   "navIndent": 16,
   "navItemHeight": 28,
   "navItemHeightScaleText": true,
@@ -35,24 +38,34 @@
   "hideFolderNoteInList": true,
   "pinCreatedFolderNote": false,
   "showTags": true,
-  "showTagsAboveFolders": false,
   "showAllTagsFolder": true,
   "showUntagged": false,
-  "tagSortOrder": "alpha-asc",
+  "tagSortOrder": "frequency-desc",
   "hiddenTags": [
     "0topic template"
   ],
   "showTopics": true,
   "topicSortOrder": "frequency-desc",
   "hiddenTopics": [
-    "0Topic Template"
+    "0Topic Template",
+    "taal template",
+    "maand template",
+    "jaar template",
+    "decennium template",
+    "eeuw template",
+    "eeuw template 1",
+    "maand template backup",
+    "werkreis template",
+    "reis template",
+    "festival template",
+    "Institution Template",
+    "Author Template"
   ],
   "defaultFolderSort": "modified-desc",
   "listPaneTitle": "header",
   "multiSelectModifier": "cmdCtrl",
   "includeDescendantNotes": true,
-  "separateNoteCounts": true,
-  "groupByDate": true,
+  "noteGrouping": "date",
   "optimizeNoteHeight": true,
   "showQuickActions": true,
   "quickActionRevealInFolder": true,
@@ -85,14 +98,24 @@
     "featureResized",
     "feature"
   ],
-  "forceSquareFeatureImage": true,
+  "forceSquareFeatureImage": false,
   "useEmbeddedImageFallback": true,
-  "externalIconProviders": {},
+  "externalIconProviders": {
+    "fontawesome-regular": true,
+    "simple-icons": true,
+    "bootstrap-icons": true,
+    "material-icons": true,
+    "fontawesome-solid": true
+  },
   "searchProvider": "internal",
   "keyboardShortcuts": {
     "pane:move-up": [
       {
         "key": "ArrowUp",
+        "modifiers": []
+      },
+      {
+        "key": "K",
         "modifiers": []
       }
     ],
@@ -100,23 +123,43 @@
       {
         "key": "ArrowDown",
         "modifiers": []
+      },
+      {
+        "key": "J",
+        "modifiers": []
       }
     ],
     "pane:page-up": [
       {
         "key": "PageUp",
         "modifiers": []
+      },
+      {
+        "key": "U",
+        "modifiers": [
+          "Ctrl"
+        ]
       }
     ],
     "pane:page-down": [
       {
         "key": "PageDown",
         "modifiers": []
+      },
+      {
+        "key": "D",
+        "modifiers": [
+          "Ctrl"
+        ]
       }
     ],
     "pane:home": [
       {
         "key": "Home",
+        "modifiers": []
+      },
+      {
+        "key": "G",
         "modifiers": []
       }
     ],
@@ -130,17 +173,29 @@
       {
         "key": "ArrowLeft",
         "modifiers": []
+      },
+      {
+        "key": "H",
+        "modifiers": []
       }
     ],
     "navigation:expand-or-focus-list": [
       {
         "key": "ArrowRight",
         "modifiers": []
+      },
+      {
+        "key": "L",
+        "modifiers": []
       }
     ],
     "navigation:focus-list": [
       {
         "key": "Tab",
+        "modifiers": []
+      },
+      {
+        "key": "T",
         "modifiers": []
       }
     ],
@@ -152,6 +207,12 @@
       {
         "key": "Backspace",
         "modifiers": []
+      },
+      {
+        "key": "D",
+        "modifiers": [
+          "Shift"
+        ]
       }
     ],
     "list:focus-navigation": [
@@ -164,6 +225,10 @@
         "modifiers": [
           "Shift"
         ]
+      },
+      {
+        "key": "H",
+        "modifiers": []
       }
     ],
     "list:focus-editor": [
@@ -173,6 +238,10 @@
       },
       {
         "key": "Tab",
+        "modifiers": []
+      },
+      {
+        "key": "F",
         "modifiers": []
       }
     ],
@@ -190,11 +259,23 @@
         "modifiers": [
           "Shift"
         ]
+      },
+      {
+        "key": "K",
+        "modifiers": [
+          "Shift"
+        ]
       }
     ],
     "list:extend-selection-down": [
       {
         "key": "ArrowDown",
+        "modifiers": [
+          "Shift"
+        ]
+      },
+      {
+        "key": "J",
         "modifiers": [
           "Shift"
         ]
@@ -206,11 +287,23 @@
         "modifiers": [
           "Shift"
         ]
+      },
+      {
+        "key": "G",
+        "modifiers": [
+          "Shift"
+        ]
       }
     ],
     "list:range-to-end": [
       {
         "key": "End",
+        "modifiers": [
+          "Shift"
+        ]
+      },
+      {
+        "key": "L",
         "modifiers": [
           "Shift"
         ]
@@ -241,13 +334,8 @@
       }
     ]
   },
-  "shortcuts": [
-    {
-      "type": "topic",
-      "topicName": "neurosymbolic AI"
-    }
-  ],
-  "checkForUpdatesOnStart": true,
+  "shortcuts": [],
+  "checkForUpdatesOnStart": false,
   "confirmBeforeDelete": true,
   "searchActive": true,
   "customVaultName": "",
@@ -271,6 +359,38 @@
     "underconstraining.md": {
       "folder": false,
       "tag": true
+    },
+    "Cross-entropy games for language models_ From implicit knowledge to general capability measures.md": {
+      "folder": false,
+      "tag": true
+    },
+    "Neural concept verifier_ Scaling prover-verifier games via concept encodings.md": {
+      "folder": false,
+      "tag": true
+    },
+    "Approximate knowledge compilation using tensor factorizations.md": {
+      "folder": false,
+      "tag": true
+    },
+    "ActivationReasoning_ Logical reasoning in latent activation spaces.md": {
+      "folder": false,
+      "tag": true
+    },
+    "dailies/2025/10/25-10-2025.md": {
+      "folder": false,
+      "tag": true
+    },
+    "KL-Regularized reinforcement learning is designed to mode collapse.md": {
+      "folder": false,
+      "tag": true
+    },
+    "Why language models hallucinate.md": {
+      "folder": false,
+      "tag": true
+    },
+    "Sample-efficient learning of concepts with theoretical guarantees_ from data to concepts without interventions.md": {
+      "folder": false,
+      "tag": true
     }
   },
   "fileIcons": {},
@@ -284,7 +404,7 @@
     "artificial intelligence": "lucide-brain",
     "mathematics": "lucide-function-square",
     "computer science": "lucide-computer",
-    "machine learning": "lucide-graduation-cap",
+    "machine learning": "lucide-brain-circuit",
     "logic": "lucide-ampersand",
     "modelling": "lucide-file-box",
     "deep learning models": "lucide-brain",
@@ -306,9 +426,89 @@
     "calculus": "lucide-function-square",
     "functional analysis": "lucide-function-square",
     "real analysis": "lucide-chart-spline",
-    "algebra": "lucide-variable"
+    "algebra": "lucide-variable",
+    "planning": "lucide-route",
+    "world model": "lucide-globe",
+    "artificial general intelligence": "lucide-brain",
+    "complex analysis": "lucide-italic",
+    "probability distribution": "dice",
+    "stochastic processes": "dice",
+    "probabilistic logics": "dice",
+    "softkr": "lucide-brain",
+    "neurosymbolic ai": "lucide-brain",
+    "game theory": "lucide-gamepad-2",
+    "social sciences": "lucide-circle-user",
+    "natural sciences": "lucide-tree-pine",
+    "academic research": "lucide-graduation-cap",
+    "physics": "lucide-atom",
+    "multi-agent systems": "lucide-bot",
+    "llm agents": "lucide-bot",
+    "abstraction": "lucide-blocks",
+    "embodiment": "bootstrap-icons:robot",
+    "machine learning settings": "lucide-brain-circuit",
+    "equivariant networks": "bootstrap-icons:symmetry-vertical",
+    "probabilistic programming": "dice",
+    "shortcuts": "fontawesome-regular:horse",
+    "linguistics": "lucide-languages",
+    "life sciences": "lucide-biohazard",
+    "wereld": "lucide-globe-2",
+    "europa": "emoji:🇪🇺",
+    "nederland": "emoji:🇳🇱",
+    "noord amerika": "emoji:🌎",
+    "azië": "emoji:🌏",
+    "verenigde staten van amerika": "emoji:🇺🇸",
+    "verenigd koninkrijk": "emoji:🇬🇧",
+    "oceanië": "emoji:🌏",
+    "afrika": "emoji:🌍",
+    "duitsland": "emoji:🇩🇪",
+    "eu": "emoji:🇪🇺",
+    "oostenrijk": "emoji:🇦🇹",
+    "italië": "emoji:🇮🇹",
+    "slovenie": "emoji:🇸🇮",
+    "belgië": "emoji:🇧🇪",
+    "frankrijk": "emoji:🇫🇷",
+    "denemarken": "emoji:🇩🇰",
+    "noorwegen": "emoji:🇳🇴",
+    "utrecht": "emoji:🌇",
+    "amsterdam": "emoji:🌇",
+    "zuid amerika": "emoji:🌎",
+    "breda": "emoji:🌇",
+    "rotterdam": "emoji:🏙️",
+    "tijd": "lucide-calendar",
+    "mensen": "lucide-user",
+    "persoonlijk": "lucide-book-heart",
+    "venues": "lucide-book",
+    "institutions": "lucide-landmark",
+    "universities": "lucide-university",
+    "companies": "lucide-building-2",
+    "politiek": "lucide-vote",
+    "journals": "lucide-notebook-text",
+    "reizen": "lucide-plane-takeoff",
+    "vakanties": "lucide-tent-tree",
+    "werkreizen": "lucide-briefcase-conveyor-belt",
+    "concept": "lucide-star",
+    "source": "lucide-notebook-text",
+    "author": "lucide-user",
+    "daily": "lucide-calendar",
+    "locatie": "lucide-map-pin",
+    "persoon": "lucide-user",
+    "muziek": "lucide-music",
+    "method": "lucide-pen-tool",
+    "film": "lucide-video"
   },
-  "tagColors": {},
+  "tagColors": {
+    "source": "#0ea5e9",
+    "concept": "#84cc16",
+    "author": "#000000",
+    "topic": "#f59e0b",
+    "method": "#84cc16",
+    "project": "#f43f5e",
+    "daily": "#3b82f6",
+    "locatie": "#84cc16",
+    "film": "#84cc16",
+    "persoon": "#000000",
+    "muziek": "#84cc16"
+  },
   "tagBackgroundColors": {},
   "tagSortOverrides": {},
   "tagAppearances": {
@@ -321,12 +521,22 @@
       "showImage": false
     }
   },
-  "recentColors": [],
+  "topicIcons": {},
+  "topicColors": {},
+  "topicBackgroundColors": {},
+  "topicSortOverrides": {},
+  "topicAppearances": {},
+  "recentColors": [
+    "#000000"
+  ],
   "lastShownVersion": "",
   "latestKnownRelease": "1.5.5",
   "lastAnnouncedRelease": "",
-  "lastReleaseCheckAt": 1760855495275,
+  "lastReleaseCheckAt": 1760941997597,
   "rootFolderOrder": [],
+  "rootTagOrder": [],
+  "rootTopicOrder": [],
+  "showTagsAboveFolders": false,
   "showFavoriteTagsFolder": true,
   "showUntaggedInFavorites": false,
   "favoriteTags": [

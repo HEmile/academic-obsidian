@@ -2,7 +2,7 @@
 aliases:
 partOf:
 Created:
-  - "[[17-10-2025]]"
+  - "[[28-10-2025]]"
 subset:
   - "[[venues]]"
 ---
