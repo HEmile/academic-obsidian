@@ -501,6 +501,42 @@
                   "eState": "{}"
                 },
                 {
+                  "title": "UAI",
+                  "icon": "lucide-file",
+                  "state": "{\"type\":\"markdown\",\"state\":{\"file\":\"UAI.md\",\"mode\":\"source\",\"source\":false,\"backlinks\":true,\"backlinkOpts\":{\"collapseAll\":false,\"extraContext\":false,\"sortOrder\":\"alphabetical\",\"showSearch\":false,\"searchQuery\":\"\",\"backlinkCollapsed\":false,\"unlinkedCollapsed\":true}},\"icon\":\"lucide-file\",\"title\":\"UAI\"}",
+                  "eState": "{\"cursor\":{\"from\":{\"line\":8,\"ch\":0},\"to\":{\"line\":8,\"ch\":0}}}"
+                },
+                {
+                  "title": "ICML",
+                  "icon": "lucide-file",
+                  "state": "{\"type\":\"markdown\",\"state\":{\"file\":\"ICML.md\",\"mode\":\"source\",\"source\":false,\"backlinks\":true,\"backlinkOpts\":{\"collapseAll\":false,\"extraContext\":false,\"sortOrder\":\"alphabetical\",\"showSearch\":false,\"searchQuery\":\"\",\"backlinkCollapsed\":false,\"unlinkedCollapsed\":true}},\"icon\":\"lucide-file\",\"title\":\"ICML\"}",
+                  "eState": "{\"cursor\":{\"from\":{\"line\":8,\"ch\":0},\"to\":{\"line\":8,\"ch\":0}}}"
+                },
+                {
+                  "title": "NeurIPS",
+                  "icon": "lucide-file",
+                  "state": "{\"type\":\"markdown\",\"state\":{\"file\":\"NeurIPS.md\",\"mode\":\"source\",\"source\":false,\"backlinks\":true,\"backlinkOpts\":{\"collapseAll\":false,\"extraContext\":false,\"sortOrder\":\"alphabetical\",\"showSearch\":false,\"searchQuery\":\"\",\"backlinkCollapsed\":false,\"unlinkedCollapsed\":true}},\"icon\":\"lucide-file\",\"title\":\"NeurIPS\"}",
+                  "eState": "{\"cursor\":{\"from\":{\"line\":8,\"ch\":0},\"to\":{\"line\":8,\"ch\":0}}}"
+                },
+                {
+                  "title": "UCLA",
+                  "icon": "lucide-file",
+                  "state": "{\"type\":\"markdown\",\"state\":{\"file\":\"UCLA.md\",\"mode\":\"source\",\"source\":false,\"backlinks\":true,\"backlinkOpts\":{\"collapseAll\":false,\"extraContext\":false,\"sortOrder\":\"alphabetical\",\"showSearch\":false,\"searchQuery\":\"\",\"backlinkCollapsed\":false,\"unlinkedCollapsed\":true}},\"icon\":\"lucide-file\",\"title\":\"UCLA\"}",
+                  "eState": "{\"cursor\":{\"from\":{\"line\":6,\"ch\":0},\"to\":{\"line\":6,\"ch\":0}}}"
+                },
+                {
+                  "title": "AI Journal",
+                  "icon": "lucide-file",
+                  "state": "{\"type\":\"markdown\",\"state\":{\"file\":\"AI Journal.md\",\"mode\":\"source\",\"source\":false,\"backlinks\":true,\"backlinkOpts\":{\"collapseAll\":false,\"extraContext\":false,\"sortOrder\":\"alphabetical\",\"showSearch\":false,\"searchQuery\":\"\",\"backlinkCollapsed\":false,\"unlinkedCollapsed\":true}},\"icon\":\"lucide-file\",\"title\":\"AI Journal\"}",
+                  "eState": "{\"cursor\":{\"from\":{\"line\":8,\"ch\":0},\"to\":{\"line\":8,\"ch\":0}}}"
+                },
+                {
+                  "title": "README",
+                  "icon": "lucide-file",
+                  "state": "{\"type\":\"markdown\",\"state\":{\"file\":\"README.md\",\"mode\":\"source\",\"source\":false,\"backlinks\":true,\"backlinkOpts\":{\"collapseAll\":false,\"extraContext\":false,\"sortOrder\":\"alphabetical\",\"showSearch\":false,\"searchQuery\":\"\",\"backlinkCollapsed\":false,\"unlinkedCollapsed\":true}},\"icon\":\"lucide-file\",\"title\":\"README\"}",
+                  "eState": "{\"cursor\":{\"from\":{\"line\":4,\"ch\":267},\"to\":{\"line\":4,\"ch\":267}}}"
+                },
+                {
                   "title": "Neurosymbolic Diffusion Models",
                   "icon": "lucide-file",
                   "state": "{\"type\":\"markdown\",\"state\":{\"file\":\"Neurosymbolic Diffusion Models.md\",\"mode\":\"source\",\"source\":false,\"backlinks\":true,\"backlinkOpts\":{\"collapseAll\":false,\"extraContext\":false,\"sortOrder\":\"alphabetical\",\"showSearch\":false,\"searchQuery\":\"\",\"backlinkCollapsed\":false,\"unlinkedCollapsed\":true}},\"icon\":\"lucide-file\",\"title\":\"Neurosymbolic Diffusion Models\"}",
@@ -547,7 +583,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "UCLA.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -562,7 +598,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "UCLA"
             }
           }
         ],
@@ -824,6 +860,12 @@
   },
   "active": "03cf90b4084d662c",
   "lastOpenFiles": [
+    "UAI.md",
+    "ICML.md",
+    "NeurIPS.md",
+    "UCLA.md",
+    "AI Journal.md",
+    "README.md",
     "Neurosymbolic Diffusion Models.md",
     "Files/Pasted image 20251028164327.png",
     "A-nesi_ A scalable approximate method for probabilistic neurosymbolic inference.md",
@@ -839,7 +881,6 @@
     "Symbol grounding in neuro-symbolic AI_ A gentle introduction to reasoning shortcuts.md",
     "A semantic loss function for deep learning with symbolic knowledge.md",
     "Journal version of Reasoning Shortcuts.md",
-    "UCLA.md",
     "Guy Van den Broeck.md",
     "Luciano Serafini.md",
     "Logic tensor networks.md",
@@ -848,12 +889,7 @@
     "Analyzing differentiable fuzzy logic operators.md",
     "Stefano Teso.md",
     "BEARS make neuro-symbolic models aware of their reasoning shortcuts.md",
-    "AI Journal.md",
     "venues.md",
-    "UAI.md",
-    "ICML.md",
-    "NeurIPS.md",
-    "Samuele Bortolotti.md",
     "Files/Pasted image 20251017110208.png",
     "Files/Pasted image 20251017113420.png",
     "Bases/Ideas.base",

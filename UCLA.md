@@ -2,7 +2,7 @@
 aliases:
 partOf:
 subset:
-  - "[[venues]]"
+  - "[[institutions]]"
 ---
 
 
