@@ -501,6 +501,30 @@
                   "eState": "{}"
                 },
                 {
+                  "title": "Neurosymbolic Diffusion Models",
+                  "icon": "lucide-file",
+                  "state": "{\"type\":\"markdown\",\"state\":{\"file\":\"Neurosymbolic Diffusion Models.md\",\"mode\":\"source\",\"source\":false,\"backlinks\":true,\"backlinkOpts\":{\"collapseAll\":false,\"extraContext\":false,\"sortOrder\":\"alphabetical\",\"showSearch\":false,\"searchQuery\":\"\",\"backlinkCollapsed\":false,\"unlinkedCollapsed\":true}},\"icon\":\"lucide-file\",\"title\":\"Neurosymbolic Diffusion Models\"}",
+                  "eState": "{\"cursor\":{\"from\":{\"line\":23,\"ch\":36},\"to\":{\"line\":23,\"ch\":36}},\"scroll\":0}"
+                },
+                {
+                  "title": "A-nesi_ A scalable approximate method for probabilistic neurosymbolic inference",
+                  "icon": "lucide-file",
+                  "state": "{\"type\":\"markdown\",\"state\":{\"file\":\"A-nesi_ A scalable approximate method for probabilistic neurosymbolic inference.md\",\"mode\":\"source\",\"source\":false,\"backlinks\":true,\"backlinkOpts\":{\"collapseAll\":false,\"extraContext\":false,\"sortOrder\":\"alphabetical\",\"showSearch\":false,\"searchQuery\":\"\",\"backlinkCollapsed\":false,\"unlinkedCollapsed\":true}},\"icon\":\"lucide-file\",\"title\":\"A-nesi_ A scalable approximate method for probabilistic neurosymbolic inference\"}",
+                  "eState": "{\"cursor\":{\"from\":{\"line\":21,\"ch\":36},\"to\":{\"line\":21,\"ch\":36}},\"scroll\":1.9584086799276672}"
+                },
+                {
+                  "title": "Neural probabilistic logic programming in DeepProbLog",
+                  "icon": "lucide-file",
+                  "state": "{\"type\":\"markdown\",\"state\":{\"file\":\"Neural probabilistic logic programming in DeepProbLog.md\",\"mode\":\"source\",\"source\":false,\"backlinks\":true,\"backlinkOpts\":{\"collapseAll\":false,\"extraContext\":false,\"sortOrder\":\"alphabetical\",\"showSearch\":false,\"searchQuery\":\"\",\"backlinkCollapsed\":false,\"unlinkedCollapsed\":true}},\"icon\":\"lucide-file\",\"title\":\"Neural probabilistic logic programming in DeepProbLog\"}",
+                  "eState": "{\"cursor\":{\"from\":{\"line\":28,\"ch\":0},\"to\":{\"line\":28,\"ch\":0}},\"scroll\":1.2531645569620253}"
+                },
+                {
+                  "title": "Symbol grounding in neuro-symbolic AI_ A gentle introduction to reasoning shortcuts",
+                  "icon": "lucide-file",
+                  "state": "{\"type\":\"markdown\",\"state\":{\"file\":\"Symbol grounding in neuro-symbolic AI_ A gentle introduction to reasoning shortcuts.md\",\"mode\":\"source\",\"source\":false,\"backlinks\":true,\"backlinkOpts\":{\"collapseAll\":false,\"extraContext\":false,\"sortOrder\":\"alphabetical\",\"showSearch\":false,\"searchQuery\":\"\",\"backlinkCollapsed\":false,\"unlinkedCollapsed\":true}},\"icon\":\"lucide-file\",\"title\":\"Symbol grounding in neuro-symbolic AI_ A gentle introduction to reasoning shortcuts\"}",
+                  "eState": "{\"cursor\":{\"from\":{\"line\":23,\"ch\":0},\"to\":{\"line\":23,\"ch\":0}}}"
+                },
+                {
                   "title": "A semantic loss function for deep learning with symbolic knowledge",
                   "icon": "lucide-file",
                   "state": "{\"type\":\"markdown\",\"state\":{\"file\":\"A semantic loss function for deep learning with symbolic knowledge.md\",\"mode\":\"source\",\"source\":false,\"backlinks\":true,\"backlinkOpts\":{\"collapseAll\":false,\"extraContext\":false,\"sortOrder\":\"alphabetical\",\"showSearch\":false,\"searchQuery\":\"\",\"backlinkCollapsed\":false,\"unlinkedCollapsed\":true}},\"icon\":\"lucide-file\",\"title\":\"A semantic loss function for deep learning with symbolic knowledge\"}",
@@ -523,7 +547,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Symbol grounding in neuro-symbolic AI_ A gentle introduction to reasoning shortcuts.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -538,40 +562,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Symbol grounding in neuro-symbolic AI_ A gentle introduction to reasoning shortcuts"
-            }
-          },
-          {
-            "id": "7fc535028edcebda",
-            "type": "leaf",
-            "pane-relief:history-v1": {
-              "pos": 0,
-              "stack": [
-                {
-                  "state": "{}",
-                  "eState": "{}"
-                }
-              ]
-            },
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Samy Badreddine.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Samy Badreddine"
+              "title": "README"
             }
           }
         ],
@@ -833,13 +824,25 @@
   },
   "active": "03cf90b4084d662c",
   "lastOpenFiles": [
+    "Neurosymbolic Diffusion Models.md",
+    "Files/Pasted image 20251028164327.png",
+    "A-nesi_ A scalable approximate method for probabilistic neurosymbolic inference.md",
+    "Files/Pasted image 20251028164309.png",
+    "Neural probabilistic logic programming in DeepProbLog.md",
+    "Files/Pasted image 20251028164004.png",
+    "Files/Pasted image 20251028163856.png",
+    "probabilistic circuits.md",
+    "Luc De Raedt.md",
+    "Robin Manhaeve.md",
+    "Samy Badreddine.md",
+    "KU Leuven.md",
+    "Symbol grounding in neuro-symbolic AI_ A gentle introduction to reasoning shortcuts.md",
     "A semantic loss function for deep learning with symbolic knowledge.md",
     "Journal version of Reasoning Shortcuts.md",
     "UCLA.md",
     "Guy Van den Broeck.md",
     "Luciano Serafini.md",
     "Logic tensor networks.md",
-    "Samy Badreddine.md",
     "Sony.md",
     "artificial intelligence.md",
     "Analyzing differentiable fuzzy logic operators.md",
@@ -851,14 +854,6 @@
     "ICML.md",
     "NeurIPS.md",
     "Samuele Bortolotti.md",
-    "Emanuele Marconato.md",
-    "Vrije Universiteit Amsterdam.md",
-    "University of Edinburgh.md",
-    "institutions.md",
-    "University of Trento.md",
-    "Edoardo Ponti.md",
-    "Antonio Vergari.md",
-    "Frank van Harmelen.md",
     "Files/Pasted image 20251017110208.png",
     "Files/Pasted image 20251017113420.png",
     "Bases/Ideas.base",

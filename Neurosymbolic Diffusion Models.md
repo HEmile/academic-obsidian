@@ -21,7 +21,7 @@ citeKey: vankriekenNeurosymbolicDiffusionModels2025
 zoteroUri: zotero://select/items/@vankriekenNeurosymbolicDiffusionModels2025
 url: https://arxiv.org/abs/2505.13138
 ---
-
+![[Pasted image 20251028164327.png]]
 
 --- 
 #source/paper
