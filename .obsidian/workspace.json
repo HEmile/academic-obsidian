@@ -494,8 +494,14 @@
             "id": "03cf90b4084d662c",
             "type": "leaf",
             "pane-relief:history-v1": {
-              "pos": 0,
+              "pos": 1,
               "stack": [
+                {
+                  "title": "2025-10-28",
+                  "icon": "lucide-file",
+                  "state": "{\"type\":\"markdown\",\"state\":{\"file\":\"2025-10-28.md\",\"mode\":\"source\",\"source\":false,\"backlinks\":true,\"backlinkOpts\":{\"collapseAll\":false,\"extraContext\":false,\"sortOrder\":\"alphabetical\",\"showSearch\":false,\"searchQuery\":\"\",\"backlinkCollapsed\":false,\"unlinkedCollapsed\":true}},\"icon\":\"lucide-file\",\"title\":\"2025-10-28\"}",
+                  "eState": "{\"cursor\":{\"from\":{\"line\":0,\"ch\":0},\"to\":{\"line\":0,\"ch\":0}}}"
+                },
                 {
                   "state": "{}",
                   "eState": "{}"
@@ -858,12 +864,13 @@
       "notebook-navigator:Notebook Navigator": false
     }
   },
-  "active": "03cf90b4084d662c",
+  "active": "4cafb538848cfc00",
   "lastOpenFiles": [
+    "2025-10-28.md",
+    "UCLA.md",
     "UAI.md",
     "ICML.md",
     "NeurIPS.md",
-    "UCLA.md",
     "AI Journal.md",
     "README.md",
     "Neurosymbolic Diffusion Models.md",
@@ -889,7 +896,6 @@
     "Analyzing differentiable fuzzy logic operators.md",
     "Stefano Teso.md",
     "BEARS make neuro-symbolic models aware of their reasoning shortcuts.md",
-    "venues.md",
     "Files/Pasted image 20251017110208.png",
     "Files/Pasted image 20251017113420.png",
     "Bases/Ideas.base",
