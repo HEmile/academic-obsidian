@@ -24,6 +24,30 @@
                   "eState": "{\"cursor\":{\"from\":{\"line\":14,\"ch\":0},\"to\":{\"line\":14,\"ch\":0}}}"
                 },
                 {
+                  "title": "machine learning",
+                  "icon": "lucide-file",
+                  "state": "{\"type\":\"markdown\",\"state\":{\"file\":\"machine learning.md\",\"mode\":\"source\",\"source\":false,\"backlinks\":true,\"backlinkOpts\":{\"collapseAll\":false,\"extraContext\":false,\"sortOrder\":\"alphabetical\",\"showSearch\":false,\"searchQuery\":\"\",\"backlinkCollapsed\":false,\"unlinkedCollapsed\":true}},\"icon\":\"lucide-file\",\"title\":\"machine learning\"}",
+                  "eState": "{\"cursor\":{\"from\":{\"line\":6,\"ch\":0},\"to\":{\"line\":6,\"ch\":0}}}"
+                },
+                {
+                  "title": "artificial intelligence",
+                  "icon": "lucide-file",
+                  "state": "{\"type\":\"markdown\",\"state\":{\"file\":\"artificial intelligence.md\",\"mode\":\"source\",\"source\":false,\"backlinks\":true,\"backlinkOpts\":{\"collapseAll\":false,\"extraContext\":false,\"sortOrder\":\"alphabetical\",\"showSearch\":false,\"searchQuery\":\"\",\"backlinkCollapsed\":false,\"unlinkedCollapsed\":true}},\"icon\":\"lucide-file\",\"title\":\"artificial intelligence\"}",
+                  "eState": "{\"cursor\":{\"from\":{\"line\":6,\"ch\":0},\"to\":{\"line\":6,\"ch\":0}}}"
+                },
+                {
+                  "title": "Neurosymbolic Diffusion Models",
+                  "icon": "lucide-file",
+                  "state": "{\"type\":\"markdown\",\"state\":{\"file\":\"Neurosymbolic Diffusion Models.md\",\"mode\":\"source\",\"source\":false,\"backlinks\":true,\"backlinkOpts\":{\"collapseAll\":false,\"extraContext\":false,\"sortOrder\":\"alphabetical\",\"showSearch\":false,\"searchQuery\":\"\",\"backlinkCollapsed\":false,\"unlinkedCollapsed\":true}},\"icon\":\"lucide-file\",\"title\":\"Neurosymbolic Diffusion Models\"}",
+                  "eState": "{\"cursor\":{\"from\":{\"line\":23,\"ch\":0},\"to\":{\"line\":23,\"ch\":0}},\"scroll\":0}"
+                },
+                {
+                  "title": "neurosymbolic AI",
+                  "icon": "lucide-file",
+                  "state": "{\"type\":\"markdown\",\"state\":{\"file\":\"neurosymbolic AI.md\",\"mode\":\"source\",\"source\":false,\"backlinks\":true,\"backlinkOpts\":{\"collapseAll\":false,\"extraContext\":false,\"sortOrder\":\"alphabetical\",\"showSearch\":false,\"searchQuery\":\"\",\"backlinkCollapsed\":false,\"unlinkedCollapsed\":true}},\"icon\":\"lucide-file\",\"title\":\"neurosymbolic AI\"}",
+                  "eState": "{\"cursor\":{\"from\":{\"line\":14,\"ch\":0},\"to\":{\"line\":14,\"ch\":0}}}"
+                },
+                {
                   "title": "Neurosymbolic Diffusion Models",
                   "icon": "lucide-file",
                   "state": "{\"type\":\"markdown\",\"state\":{\"file\":\"Neurosymbolic Diffusion Models.md\",\"mode\":\"source\",\"source\":false,\"backlinks\":true,\"backlinkOpts\":{\"collapseAll\":false,\"extraContext\":false,\"sortOrder\":\"alphabetical\",\"showSearch\":false,\"searchQuery\":\"\",\"backlinkCollapsed\":false,\"unlinkedCollapsed\":true}},\"icon\":\"lucide-file\",\"title\":\"Neurosymbolic Diffusion Models\"}",
@@ -100,7 +124,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Neurosymbolic Diffusion Models.md",
+                "file": "artificial intelligence.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -115,7 +139,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Neurosymbolic Diffusion Models"
+              "title": "artificial intelligence"
             }
           },
           {
@@ -493,13 +517,13 @@
   "active": "588ade4cb5fde5bf",
   "lastOpenFiles": [
     "neurosymbolic AI.md",
+    "machine learning.md",
+    "artificial intelligence.md",
     "Neurosymbolic Diffusion Models.md",
     "neurosymbolic learning.md",
-    "artificial intelligence.md",
     "Vrije Universiteit Amsterdam.md",
     "Noam Shazeer.md",
     "Attention is all you need.md",
-    "machine learning.md",
     "deep learning.md",
     "transformer.md",
     "A semantic loss function for deep learning with symbolic knowledge.md",
