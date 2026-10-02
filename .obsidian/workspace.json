@@ -18,6 +18,12 @@
                   "eState": "{}"
                 },
                 {
+                  "title": "artificial intelligence",
+                  "icon": "lucide-file",
+                  "state": "{\"type\":\"markdown\",\"state\":{\"file\":\"artificial intelligence.md\",\"mode\":\"source\",\"source\":false,\"backlinks\":true,\"backlinkOpts\":{\"collapseAll\":false,\"extraContext\":false,\"sortOrder\":\"alphabetical\",\"showSearch\":false,\"searchQuery\":\"\",\"backlinkCollapsed\":false,\"unlinkedCollapsed\":true}},\"icon\":\"lucide-file\",\"title\":\"artificial intelligence\"}",
+                  "eState": "{\"cursor\":{\"from\":{\"line\":6,\"ch\":0},\"to\":{\"line\":6,\"ch\":0}}}"
+                },
+                {
                   "title": "neurosymbolic AI",
                   "icon": "lucide-file",
                   "state": "{\"type\":\"markdown\",\"state\":{\"file\":\"neurosymbolic AI.md\",\"mode\":\"source\",\"source\":false,\"backlinks\":true,\"backlinkOpts\":{\"collapseAll\":false,\"extraContext\":false,\"sortOrder\":\"alphabetical\",\"showSearch\":false,\"searchQuery\":\"\",\"backlinkCollapsed\":false,\"unlinkedCollapsed\":true}},\"icon\":\"lucide-file\",\"title\":\"neurosymbolic AI\"}",
@@ -124,7 +130,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "artificial intelligence.md",
+                "file": "Neurosymbolic Diffusion Models.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -139,7 +145,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "artificial intelligence"
+              "title": "Neurosymbolic Diffusion Models"
             }
           },
           {
@@ -516,9 +522,9 @@
   },
   "active": "588ade4cb5fde5bf",
   "lastOpenFiles": [
+    "artificial intelligence.md",
     "neurosymbolic AI.md",
     "machine learning.md",
-    "artificial intelligence.md",
     "Neurosymbolic Diffusion Models.md",
     "neurosymbolic learning.md",
     "Vrije Universiteit Amsterdam.md",
