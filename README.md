@@ -11,4 +11,5 @@ If you want to learn about this approach, please read the accompanying blog post
 **Installing this template**
 Well, that couldn't be easier! Just download/clone this repo, and open Obsidian on this folder. Make sure that community plugins are set on. 
 <img width="825" height="354" alt="image" src="https://github.com/user-attachments/assets/d31c07f4-2421-461a-aea2-8c4f1032d743" />
+
 Merging it with your active setup is a lot trickier though. You'd need to compare in particular the active plugins and appearance snippets. 
