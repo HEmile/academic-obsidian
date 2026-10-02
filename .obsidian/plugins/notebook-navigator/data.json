@@ -16,16 +16,8 @@
       "periodicNotesFolder": "",
       "shortcuts": [
         {
-          "type": "note",
-          "path": "Postdoc VU - Commonsense Visual reasoning.md"
-        },
-        {
-          "type": "note",
-          "path": "Commonsense knowledge transfer from LLMs as judges.md"
-        },
-        {
           "type": "topic",
-          "topicName": "muziek"
+          "topicName": "neurosymbolic learning"
         }
       ],
       "navRainbow": {
@@ -214,7 +206,8 @@
     "werkreis template",
     "reis template",
     "festival template",
-    "University Template"
+    "University Template",
+    "muziek"
   ],
   "rootTopicOrder": [],
   "showProperties": true,
