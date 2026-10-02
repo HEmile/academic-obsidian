@@ -1,3 +1,20 @@
+/** biome-ignore-all lint/complexity/noImportantStyles: allow */
+* {
+  --first-rank-color: var(--interactive-accent);
+  --second-rank-color: var(--text-normal);
+
+  --aqs-relative-age-minute-color: var(--text-on-accent);
+  --aqs-relative-age-minute-bgcolor: var(--interactive-accent);
+  --aqs-relative-age-hour-color: var(--text-accent);
+  --aqs-relative-age-day-color: var(--text-title);
+  --aqs-relative-age-month-color: var(--text-muted);
+  --aqs-relative-age-year-color: color-mix(
+    in srgb,
+    var(--text-faint),
+    transparent 25%
+  );
+}
+
 .another-quick-switcher__floating-prompt {
   width: min(700px, 33vw);
   min-width: 500px;
@@ -14,7 +31,8 @@
   padding-left: 1rem;
 }
 
-.another-quick-switcher__modal-prompt .suggestion-item:has(.another-quick-switcher__item__selected) {
+.another-quick-switcher__modal-prompt
+  .suggestion-item:has(.another-quick-switcher__item__selected) {
   border-left: solid var(--interactive-accent) var(--size-2-3);
   padding-left: var(--size-2-3);
   border-top-left-radius: 0;
@@ -55,6 +73,55 @@
   display: flex;
   flex: 1;
   align-items: center;
+  position: relative;
+}
+
+.another-quick-switcher__item__relative-age {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.4rem;
+  padding: 0 0.35rem;
+  border-radius: 3px;
+  position: relative;
+  font-weight: 500;
+  font-size: 0.8em;
+  line-height: 1.4;
+  color: var(--text-muted);
+  background-color: transparent;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.another-quick-switcher__item__relative-age::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid currentColor;
+  border-radius: inherit;
+  box-sizing: border-box;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.another-quick-switcher__item__relative-age--minute {
+  color: var(--aqs-relative-age-minute-color);
+  background-color: var(--aqs-relative-age-minute-bgcolor);
+}
+
+.another-quick-switcher__item__relative-age--hour {
+  color: var(--aqs-relative-age-hour-color);
+}
+
+.another-quick-switcher__item__relative-age--day {
+  color: var(--aqs-relative-age-day-color);
+}
+
+.another-quick-switcher__item__relative-age--month {
+  color: var(--aqs-relative-age-month-color);
+}
+
+.another-quick-switcher__item__relative-age--year {
+  color: var(--aqs-relative-age-year-color);
 }
 
 .another-quick-switcher__item__title {
@@ -122,6 +189,18 @@
   margin-right: 12px;
 }
 
+.another-quick-switcher__link__auto-preview-icon {
+  display: flex;
+  align-items: center;
+  margin-right: 12px;
+}
+
+.another-quick-switcher__status__auto-preview-icon {
+  display: flex;
+  align-items: center;
+  margin-left: 6px;
+}
+
 .another-quick-switcher__header__floating-modal-bg {
   background-color: rgba(0, 0, 0, 0.3);
 }
@@ -169,11 +248,35 @@
 }
 .another-quick-switcher__status__count-input {
   font-size: 85%;
-  position: absolute;
   /*noinspection CssUnresolvedCustomProperty*/
   color: var(--text-muted);
-  right: 35px;
+}
+.another-quick-switcher__status__count-wrapper {
+  position: absolute;
+  right: 25px;
   top: 4rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.another-quick-switcher__checked-count-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 6px;
+  border-radius: 999px;
+  font-size: 70%;
+  font-weight: 600;
+  line-height: 1;
+  /*noinspection CssUnresolvedCustomProperty*/
+  background-color: var(--interactive-accent);
+  /*noinspection CssUnresolvedCustomProperty*/
+  color: var(--text-on-accent);
+}
+.another-quick-switcher__checked-count-badge--hidden {
+  display: none;
 }
 .another-quick-switcher__item__title__header {
   line-height: 1.1em;
@@ -194,14 +297,6 @@
   font-weight: bolder;
   /*noinspection CssUnresolvedCustomProperty*/
   color: var(--text-accent);
-}
-
-.another-quick-switcher__item__title__header_no_hit {
-  /** do nothing */
-}
-
-.another-quick-switcher__item__title__header1 {
-  /* nothing */
 }
 
 .another-quick-switcher__item__title__header2 {
@@ -227,7 +322,6 @@
 .another-quick-switcher__hit_word {
   /*noinspection CssUnresolvedCustomProperty*/
   color: var(--text-accent);
-  font-weight: bold;
 }
 
 .another-quick-switcher__grep__item__title_entry {
@@ -239,11 +333,16 @@
 
 .another-quick-switcher__grep__count-input {
   font-size: 85%;
-  position: absolute;
   /*noinspection CssUnresolvedCustomProperty*/
   color: var(--text-muted);
+}
+.another-quick-switcher__grep__count-wrapper {
+  position: absolute;
   right: 20px;
   top: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .another-quick-switcher__grep__count-input--error {
@@ -311,12 +410,12 @@
   margin-right: 3px;
 }
 .another-quick-switcher__item__meta__front_matter__value
-	+ .another-quick-switcher__item__meta__front_matter__value::before {
-	content: ", ";
+  + .another-quick-switcher__item__meta__front_matter__value::before {
+  content: ", ";
 }
 
 .another-quick-switcher__item__meta__description {
-  display: inline-flex;
+  display: inline-block;
   font-size: 1.05em;
   padding-bottom: 0.5rem;
 }
@@ -375,7 +474,8 @@
   height: 120px;
   width: 300px;
 }
-.another-quick-switcher__settings__exclude_front_matter_keys {
+.another-quick-switcher__settings__exclude_front_matter_keys,
+.another-quick-switcher__settings__include_front_matter_keys {
   height: 120px;
   width: 300px;
 }
@@ -398,36 +498,151 @@
 }
 
 .another-quick-switcher__settings__warning {
-  color: darkorange;
+  color: var(--text-warning);
   text-align: right;
+}
+
+.another-quick-switcher__settings__popup__content
+  .another-quick-switcher__settings__warning {
+  text-align: left;
+}
+
+.another-quick-switcher__settings__popup__icon.another-quick-switcher__settings__warning-icon {
+  margin-left: 6px;
+  border: none;
+}
+
+.another-quick-switcher__settings__global-search {
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  padding: 12px 0;
+}
+
+.vertical-tab-content h3.another-quick-switcher__settings__header {
+  display: flex;
+  justify-content: center;
+  font-size: 1.4rem;
+  padding-top: 1.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.another-quick-switcher__settings__global-search-input {
+  width: min(320px, 40vw);
+  border-radius: 6px;
+  border: 1px solid var(--background-modifier-border);
+  background: var(--background-secondary);
+  color: var(--text-normal);
+}
+
+.another-quick-switcher__settings__global-search-input:focus {
+  outline: none;
+  border-color: var(--interactive-accent);
+  box-shadow: 0 0 0 2px var(--background-modifier-border);
+}
+
+/* A setting turned off by the setting it depends on, and a setting hidden by
+   the filter of its group. They win over the global setting filter, which owns
+   the inline `display` style of every setting. */
+.another-quick-switcher__settings__dependency-hidden,
+.another-quick-switcher__settings__filter-hidden {
+  display: none !important;
 }
 
 .another-quick-switcher__settings__nested {
   padding-left: 30px;
 }
+.setting-group .setting-items .another-quick-switcher__settings__nested {
+  padding-left: 30px;
+}
 
 .another-quick-switcher__settings__dialog-hotkey {
-  padding: 1rem 0;
+  padding: 0.5rem 0;
   /*noinspection CssUnresolvedCustomProperty*/
   border-top: 1px solid var(--background-modifier-border);
 }
 
-.another-quick-switcher__settings__dialog-hotkey-item {
-  padding-left: 2rem;
+.another-quick-switcher__settings__dialog-hotkey__title {
+  margin-right: 0.5rem;
+}
+
+.another-quick-switcher__settings__dialog-hotkey
+  .setting-item.setting-item-heading {
+  margin-bottom: 0.5rem;
+}
+
+.another-quick-switcher__settings__popup {
+  position: relative;
+  display: inline-block;
+}
+
+.another-quick-switcher__settings__popup__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid var(--text-muted);
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1;
+  padding: 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.another-quick-switcher__settings__popup__content {
+  display: none;
+  position: absolute;
+  z-index: 1000;
+  top: calc(100% + 6px);
+  left: 0;
+  padding: 8px 10px;
+  background: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 6px;
+  color: var(--text-normal);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  width: min(40rem, 80vw);
+}
+
+.another-quick-switcher__settings__popup__content ul {
+  margin: 0;
+  padding-left: 1.2em;
+}
+
+.another-quick-switcher__settings__popup__content li + li {
+  margin-top: 4px;
+}
+
+.another-quick-switcher__settings__dialog-hotkeys-container {
+  margin-bottom: 2rem;
+}
+
+.setting-group
+  .setting-items
+  .another-quick-switcher__settings__dialog-hotkey-item {
+  padding: 0.2rem;
 }
 
 .another-quick-switcher__settings__search-command {
-  /*noinspection CssUnresolvedCustomProperty*/
-  border: solid 1px var(--text-muted);
+  border: solid 1px var(--text-faint);
   border-radius: 10px;
-  padding: 20px 25px 0 20px;
-  margin: 15px;
+  /* padding: 10px 25px 0 20px; */
+  padding-top: 10px;
+  margin: 5px;
+}
+
+.another-quick-switcher__settings__search-command .setting-group {
+  margin: 10px 25px 0 20px;
+  margin-bottom: 16px;
 }
 
 .another-quick-switcher__settings__search-command__header
   .setting-item-control {
   justify-content: left;
-  padding-bottom: 20px;
 }
 
 .another-quick-switcher__settings__search-command__header
@@ -449,9 +664,6 @@
   width: 28px;
   height: 28px;
 }
-.another-quick-switcher__settings__search-command__search-by-button_enabled {
-  /*noinspection CssUnresolvedCustomProperty*/
-}
 .another-quick-switcher__settings__search-command__search-by-button_disabled {
   /*noinspection CssUnresolvedCustomProperty*/
   opacity: 0.2;
@@ -459,6 +671,10 @@
 
 .another-quick-switcher__settings__search-command__sort-priority {
   height: 240px;
+}
+.another-quick-switcher__settings__search-command__add-button {
+  width: 100%;
+  height: 36px;
 }
 
 .another-quick-switcher__command_buttons {
@@ -518,8 +734,33 @@
 .is-mobile .another-quick-switcher__settings__search-command__add-button {
   margin: 0 3px !important;
 }
-.is-mobile .another-quick-switcher__settings__search-command__save-button {
-  margin: 0 3px !important;
+.is-mobile .another-quick-switcher__settings__global-search-input {
+  width: 100%;
+}
+
+/* Clear-or-dismiss button at the left edge of the input, shown only on
+   mobile (issue #331). Anchored to .prompt-input-container, which is
+   position: relative in Obsidian core. Sits at the bottom because the input
+   is the last in-flow row of the container in every modal */
+.another-quick-switcher__mobile-dismiss-button {
+  position: absolute;
+  inset-inline-start: 12px;
+  bottom: 12px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  /*noinspection CssUnresolvedCustomProperty*/
+  color: var(--text-muted);
+  cursor: pointer;
+}
+/* Make room for the button. Without !important, the padding shorthand of
+   `.is-mobile .prompt-input[type=text]` in Obsidian core wins */
+.is-mobile .another-quick-switcher__mobile-dismissable .prompt-input {
+  padding-inline-start: 44px !important;
 }
 
 .another-quick-switcher__backlink__item__title_entry {
@@ -550,11 +791,16 @@
 }
 .another-quick-switcher__backlink__status__count-input {
   font-size: 85%;
-  position: absolute;
   /*noinspection CssUnresolvedCustomProperty*/
   color: var(--text-muted);
-  right: 35px;
+}
+.another-quick-switcher__backlink__status__count-wrapper {
+  position: absolute;
+  right: 25px;
   top: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .another-quick-switcher__link__item__title_entry {
@@ -653,3 +899,50 @@
   display: none;
 }
 
+.another-quick-switcher__command-palette__item {
+  display: flex;
+}
+
+.another-quick-switcher__command-palette__item__keys {
+  margin-left: auto;
+  display: flex;
+  gap: 0.5rem;
+}
+.another-quick-switcher__command-palette__item__key {
+  display: flex;
+  align-items: center;
+  font-size: 80%;
+  color: darkgrey;
+}
+
+.another-quick-switcher__command-palette__item-lastused {
+  color: var(--second-rank-color);
+  font-weight: bold;
+}
+
+.another-quick-switcher__command-palette__item-lastused::before {
+  background-size: 18px 18px;
+  width: 18px;
+  height: 18px;
+  margin-right: 2px;
+  display: inline-block;
+  content: "";
+  background-color: var(--second-rank-color);
+  mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' stroke='currentColor' fill='none' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-history-icon lucide-history'><path d='M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8'/><path d='M3 3v5h5'/><path d='M12 7v5l4 2'/></svg>");
+}
+
+.another-quick-switcher__command-palette__item-top-priority {
+  color: var(--first-rank-color);
+  font-weight: bold;
+}
+
+.another-quick-switcher__command-palette__item-top-priority::before {
+  background-size: 18px 18px;
+  width: 18px;
+  height: 18px;
+  margin-right: 2px;
+  display: inline-block;
+  content: "";
+  background-color: var(--first-rank-color);
+  mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 32 32' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-crown-icon lucide-crown'><path d='M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z'/><path d='M5 21h14'/></svg>");
+}

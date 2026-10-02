@@ -10,36 +10,6 @@ var state = require('@codemirror/state');
 var view = require('@codemirror/view');
 var language = require('@codemirror/language');
 
-/******************************************************************************
-Copyright (c) Microsoft Corporation.
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-PERFORMANCE OF THIS SOFTWARE.
-***************************************************************************** */
-
-function __awaiter(thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-}
-
-typeof SuppressedError === "function" ? SuppressedError : function (error, suppressed, message) {
-    var e = new Error(message);
-    return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
-};
-
 const matchTypes = {
     'exact': "Exact match",
     'contains': "Contains value",
@@ -53,20 +23,6 @@ const matchSign = {
     'startswith': "^",
     'endswith': "$",
     'whiteSpace': "~"
-};
-const matchPreview = {
-    'exact': "with value",
-    'contains': "containing",
-    'whiteSpace': "containing",
-    'startswith': "starting with",
-    'endswith': "ending with"
-};
-const matchPreviewPath = {
-    'exact': "is",
-    'contains': "contains",
-    'whiteSpace': "contains",
-    'startswith': "starts with",
-    'endswith': "ends with"
 };
 const selectorType = {
     'attribute': 'Attribute value',
@@ -102,7 +58,7 @@ function clearExtraAttributes(link) {
     });
 }
 function fetchTargetAttributesSync(app, settings, dest, addDataHref) {
-    var _a;
+    var _a, _b, _c;
     let new_props = { tags: "" };
     const cache = app.metadataCache.getFileCache(dest);
     if (!cache)
@@ -121,7 +77,7 @@ function fetchTargetAttributesSync(app, settings, dest, addDataHref) {
         });
     }
     if (settings.targetTags) {
-        new_props["tags"] += obsidian.getAllTags(cache).join(' ');
+        new_props["tags"] += (_b = (_a = obsidian.getAllTags(cache)) === null || _a === void 0 ? void 0 : _a.join(' ')) !== null && _b !== void 0 ? _b : '';
     }
     if (addDataHref) {
         new_props['data-href'] = dest.basename;
@@ -140,7 +96,7 @@ function fetchTargetAttributesSync(app, settings, dest, addDataHref) {
         });
     };
     if (settings.getFromInlineField && app.plugins.enabledPlugins.has("dataview")) {
-        const api = (_a = app.plugins.plugins.dataview) === null || _a === void 0 ? void 0 : _a.api;
+        const api = (_c = app.plugins.plugins.dataview) === null || _c === void 0 ? void 0 : _c.api;
         if (api) {
             getResults(api);
         }
@@ -217,7 +173,8 @@ function updateLinkExtraAttributes(app, settings, link, destName) {
     }
 }
 function updateDivExtraAttributes(app, settings, link, destName, linkName, filter_collapsible = false) {
-    if (filter_collapsible && link.parentElement.getAttribute("class").contains('mod-collapsible'))
+    var _a, _b;
+    if (filter_collapsible && ((_b = (_a = link.parentElement) === null || _a === void 0 ? void 0 : _a.getAttribute("class")) === null || _b === void 0 ? void 0 : _b.contains('mod-collapsible')))
         return; // Bookmarks Folder
     if (!linkName) {
         linkName = link.textContent;
@@ -256,14 +213,17 @@ function updateElLinks(app, plugin, el, ctx) {
     });
 }
 function updatePropertiesPane(propertiesEl, file, app, plugin) {
-    var _a;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
     const frontmatter = (_a = app.metadataCache.getCache(file.path)) === null || _a === void 0 ? void 0 : _a.frontmatter;
-    if (!!frontmatter) {
-        const nodes = propertiesEl.querySelectorAll("div.internal-link > .multi-select-pill-content");
+    if (frontmatter) {
+        const nodes = propertiesEl.querySelectorAll("div.multi-select-pill-content");
         for (let i = 0; i < nodes.length; ++i) {
             const el = nodes[i];
             const linkText = el.textContent;
-            const keyEl = el.parentElement.parentElement.parentElement.parentElement.children[0].children[1];
+            const keyEl = (_f = (_e = (_d = (_c = (_b = el.parentElement) === null || _b === void 0 ? void 0 : _b.parentElement) === null || _c === void 0 ? void 0 : _c.parentElement) === null || _d === void 0 ? void 0 : _d.parentElement) === null || _e === void 0 ? void 0 : _e.children[0]) === null || _f === void 0 ? void 0 : _f.children[1];
+            if (!keyEl) {
+                continue;
+            }
             // @ts-ignore
             const key = keyEl.value;
             const listOfLinks = frontmatter[key];
@@ -285,7 +245,7 @@ function updatePropertiesPane(propertiesEl, file, app, plugin) {
                     }
                 }
             }
-            if (!!foundS) {
+            if (foundS) {
                 updateDivExtraAttributes(plugin.app, plugin.settings, el, "", foundS);
             }
         }
@@ -293,7 +253,10 @@ function updatePropertiesPane(propertiesEl, file, app, plugin) {
         for (let i = 0; i < singleNodes.length; ++i) {
             const el = singleNodes[i];
             const linkText = el.textContent;
-            const keyEl = el.parentElement.parentElement.parentElement.children[0].children[1];
+            const keyEl = (_k = (_j = (_h = (_g = el.parentElement) === null || _g === void 0 ? void 0 : _g.parentElement) === null || _h === void 0 ? void 0 : _h.parentElement) === null || _j === void 0 ? void 0 : _j.children[0]) === null || _k === void 0 ? void 0 : _k.children[1];
+            if (!keyEl) {
+                continue;
+            }
             // @ts-ignore
             const key = keyEl.value;
             const link = frontmatter[key];
@@ -311,7 +274,7 @@ function updatePropertiesPane(propertiesEl, file, app, plugin) {
                     foundS = split[0];
                 }
             }
-            if (!!foundS) {
+            if (foundS) {
                 updateDivExtraAttributes(plugin.app, plugin.settings, el, "", foundS);
             }
         }
@@ -326,7 +289,7 @@ function updateVisibleLinks(app, plugin) {
             const cachedFile = app.metadataCache.getFileCache(file);
             // @ts-ignore
             const metadata = (_b = (_a = leaf.view) === null || _a === void 0 ? void 0 : _a.metadataEditor) === null || _b === void 0 ? void 0 : _b.contentEl;
-            if (!!metadata) {
+            if (metadata) {
                 updatePropertiesPane(metadata, file, app, plugin);
             }
             //@ts-ignore
@@ -353,29 +316,275 @@ function updateVisibleLinks(app, plugin) {
     });
 }
 
+var en = {
+    "sections.styling": "Styling",
+    "sections.settings": "Settings",
+    "sections.advanced": "Advanced",
+    "settings.targetAttributes.name": "Target Attributes for styling",
+    "settings.targetAttributes.desc": "Frontmatter attributes to target, comma separated",
+    "settings.targetAttributes.placeholder": "Enter attributes as string, comma separated",
+    "settings.enableEditor.name": "Enable in Editor",
+    "settings.enableEditor.desc": "If true, this will also supercharge internal links in the editor view of a note.",
+    "settings.enableTabHeader.name": "Enable in tab headers",
+    "settings.enableTabHeader.desc": "If true, this will also supercharge the headers of a tab.",
+    "settings.enableFileList.name": "Enable in File Browser",
+    "settings.enableFileList.desc": "If true, this will also supercharge the file browser.",
+    "settings.enableBases.name": "Enable in Bases",
+    "settings.enableBases.desc": "If true, this will also supercharge Obsidian Bases.",
+    "settings.enableBacklinks.name": "Enable in Plugins",
+    "settings.enableBacklinks.desc": "If true, this will also supercharge plugins like the backlinks and forward links panels.",
+    "settings.enableQuickSwitcher.name": "Enable in Quick Switcher",
+    "settings.enableQuickSwitcher.desc": "If true, this will also supercharge the quick switcher.",
+    "settings.enableSuggestor.name": "Enable in Link Autocompleter",
+    "settings.enableSuggestor.desc": "If true, this will also supercharge the link autocompleter.",
+    "settings.targetTags.name": "Parse all tags in the file",
+    "settings.targetTags.desc": "Sets the `data-link-tags`-attribute to look for tags both in the frontmatter and in the file as #tag-name",
+    "settings.getFromInlineField.name": "Search for attribute in Inline fields like <field::>",
+    "settings.getFromInlineField.desc": "Sets the `data-link-<field>`-attribute to the value of inline fields",
+    "settings.activateSnippet.name": "Automatically activate snippet",
+    "settings.activateSnippet.desc": 'If true, this will automatically activate the generated CSS snippet "supercharged-links-gen.css". Turn this off if you don\'t want this to happen.',
+    "settings.deprecatedMenu.name": "Display field options in context menu",
+    "settings.deprecatedMenu.desc": "This feature has been migrated to metadata-menu plugin https://github.com/mdelobelle/metadatamenu",
+    "selectors.new.name": "New selector",
+    "selectors.new.desc": "Create a new selector to style with Style Settings.",
+    "selectors.button.new": "New",
+    "selectors.tooltip.moveDown": "Move selector down",
+    "selectors.tooltip.moveUp": "Move selector up",
+    "selectors.tooltip.edit": "Edit selector",
+    "selectors.tooltip.remove": "Remove selector",
+    "styling.helper.html": "Styling can be done using the Style Settings plugin. <ol><li>Create selectors down below.</li><li>Go to the Style Settings tab and style your links!</li></ol>",
+    "modal.title": "Select what links to style!",
+    "modal.typeOfSelector.name": "Type of selector",
+    "modal.typeOfSelector.desc": "Attributes selects YAML and DataView attributes, tags chooses the tags of a note, and path considers the name of the note including in what folder it is.",
+    "modal.attributeName.name": "Attribute name",
+    "modal.attributeName.desc": "What attribute to target? Make sure to first add target attributes to the settings at the top!",
+    "modal.attributeValue.name": "Value to match",
+    "modal.attributeValue.desc": "Value to match.",
+    "modal.advanced": "Advanced",
+    "modal.matchingType.name": "Matching type",
+    "modal.matchingType.desc": "How to compare the attribute or path with the given value.",
+    "modal.caseSensitive.name": "Case sensitive matching",
+    "modal.caseSensitive.desc": "Should the matching of the value be case sensitive?",
+    "modal.styleOptions.name": "Style options",
+    "modal.styleOptions.desc": "What styling options are active? Disabling options you won't use can improve performance slightly.",
+    "modal.styleOptions.text.tooltip": "Style link text",
+    "modal.styleOptions.prepend.tooltip": "Add content before link",
+    "modal.styleOptions.append.tooltip": "Add content after link",
+    "modal.styleOptions.background.tooltip": "Add optional background or underline to link",
+    "modal.result": "Result",
+    "modal.preview": "Preview",
+    "modal.save": "Save",
+    "placeholders.attrValue": "Attribute value to match.",
+    "placeholders.tagValue": "Note tag to match (without #).",
+    "placeholders.pathValue": "File path to match.",
+    "selectorType.attribute": "Attribute value",
+    "selectorType.tag": "Tag",
+    "selectorType.path": "Note path",
+    "labels.attrValue": "Attribute value",
+    "labels.tag": "Tag",
+    "labels.path": "Path",
+    "matchTypes.exact": "Exact match",
+    "matchTypes.contains": "Contains value",
+    "matchTypes.whiteSpace": "Value within whitespace separated words",
+    "matchTypes.startswith": "Starts with this value",
+    "matchTypes.endswith": "Ends with this value",
+    "words.note": "Note",
+    "words.noteLower": "note",
+    "display.chooseTag": "Please choose a tag",
+    "display.noAttributesAdded": 'No attributes added to "Target attributes". Go to plugin settings to add them.',
+    "display.chooseAttributeName": "Please choose an attribute name.",
+    "display.chooseAttributeValue": "Please choose an attribute value.",
+    "display.choosePath": "Please choose a path.",
+    "display.tagPreview": "{note} has tag {tag}",
+    "display.attributePreview": "{note} has attribute <b>{name}</b> {match}.",
+    "display.pathPreview": "The path of the {note} {match}",
+    "matchPreview.exact": "with value <b>{value}</b>",
+    "matchPreview.contains": "containing <b>{value}</b>",
+    "matchPreview.whiteSpace": "containing <b>{value}</b>",
+    "matchPreview.startswith": "starting with <b>{value}</b>",
+    "matchPreview.endswith": "ending with <b>{value}</b>",
+    "matchPreviewPath.exact": "is <b>{value}</b>",
+    "matchPreviewPath.contains": "contains <b>{value}</b>",
+    "matchPreviewPath.whiteSpace": "contains <b>{value}</b>",
+    "matchPreviewPath.startswith": "starts with <b>{value}</b>",
+    "matchPreviewPath.endswith": "ends with <b>{value}</b>",
+};
+
+var zh = {
+    "sections.styling": "样式",
+    "sections.settings": "设置",
+    "sections.advanced": "高级",
+    "settings.targetAttributes.name": "用于样式的目标属性",
+    "settings.targetAttributes.desc": "要匹配的 Frontmatter 属性，逗号分隔",
+    "settings.targetAttributes.placeholder": "输入属性名，以逗号分隔",
+    "settings.enableEditor.name": "在编辑器中启用",
+    "settings.enableEditor.desc": "启用后，编辑器视图中的内部链接也会被超充。",
+    "settings.enableTabHeader.name": "在标签标题中启用",
+    "settings.enableTabHeader.desc": "启用后，标签页标题也会被超充。",
+    "settings.enableFileList.name": "在文件浏览器中启用",
+    "settings.enableFileList.desc": "启用后，文件浏览器中的条目也会被超充。",
+    "settings.enableBases.name": "在 Bases 中启用",
+    "settings.enableBases.desc": "启用后，Obsidian Bases 中的链接也会被超充。",
+    "settings.enableBacklinks.name": "在插件面板中启用",
+    "settings.enableBacklinks.desc": "启用后，反向链接、外向链接等面板中的链接也会被超充。",
+    "settings.enableQuickSwitcher.name": "在快速切换中启用",
+    "settings.enableQuickSwitcher.desc": "启用后，快速切换器中的条目也会被超充。",
+    "settings.enableSuggestor.name": "在链接补全中启用",
+    "settings.enableSuggestor.desc": "启用后，链接补全列表中的条目也会被超充。",
+    "settings.targetTags.name": "解析笔记中的所有标签",
+    "settings.targetTags.desc": "将 data-link-tags 同时包含 Frontmatter 与正文中的 #标签。",
+    "settings.getFromInlineField.name": "从内联字段（如 <field::>）中获取属性",
+    "settings.getFromInlineField.desc": "将 data-link-<field> 设置为相应内联字段的值。",
+    "settings.activateSnippet.name": "自动启用生成的片段",
+    "settings.activateSnippet.desc": "启用后，将自动启用 supercharged-links-gen.css 片段；如不需要请关闭。",
+    "settings.deprecatedMenu.name": "在上下文菜单中显示字段选项",
+    "settings.deprecatedMenu.desc": "该功能已迁移至 metadata-menu 插件：https://github.com/mdelobelle/metadatamenu",
+    "selectors.new.name": "新建选择器",
+    "selectors.new.desc": "创建一个选择器并在 Style Settings 中进行样式设置。",
+    "selectors.button.new": "新建",
+    "selectors.tooltip.moveDown": "下移选择器",
+    "selectors.tooltip.moveUp": "上移选择器",
+    "selectors.tooltip.edit": "编辑选择器",
+    "selectors.tooltip.remove": "删除选择器",
+    "styling.helper.html": "可以配合 Style Settings 插件进行样式设置。<ol><li>在下方创建选择器。</li><li>进入 Style Settings 选项卡调整链接样式！</li></ol>",
+    "modal.title": "选择要设置样式的链接！",
+    "modal.typeOfSelector.name": "选择器类型",
+    "modal.typeOfSelector.desc": "Attribute 选择 YAML/Dataview 属性；Tag 选择笔记标签；Path 按名称与路径匹配。",
+    "modal.attributeName.name": "属性名",
+    "modal.attributeName.desc": "要匹配哪个属性？请先在顶部设置中添加目标属性！",
+    "modal.attributeValue.name": "匹配值",
+    "modal.attributeValue.desc": "用于匹配的值。",
+    "modal.advanced": "高级",
+    "modal.matchingType.name": "匹配方式",
+    "modal.matchingType.desc": "如何将属性或路径与给定值进行比较。",
+    "modal.caseSensitive.name": "区分大小写",
+    "modal.caseSensitive.desc": "是否对匹配进行大小写敏感匹配？",
+    "modal.styleOptions.name": "样式选项",
+    "modal.styleOptions.desc": "启用哪些样式项？禁用不用的选项可略微提升性能。",
+    "modal.styleOptions.text.tooltip": "设置链接文本样式",
+    "modal.styleOptions.prepend.tooltip": "在链接前添加内容",
+    "modal.styleOptions.append.tooltip": "在链接后添加内容",
+    "modal.styleOptions.background.tooltip": "为链接添加背景或下划线",
+    "modal.result": "结果",
+    "modal.preview": "预览",
+    "modal.save": "保存",
+    "placeholders.attrValue": "要匹配的属性值。",
+    "placeholders.tagValue": "要匹配的标签（不含 #）。",
+    "placeholders.pathValue": "要匹配的文件路径。",
+    "selectorType.attribute": "属性值",
+    "selectorType.tag": "标签",
+    "selectorType.path": "笔记路径",
+    "labels.attrValue": "属性值",
+    "labels.tag": "标签",
+    "labels.path": "路径",
+    "matchTypes.exact": "完全匹配",
+    "matchTypes.contains": "包含值",
+    "matchTypes.whiteSpace": "在空格分隔的词中包含",
+    "matchTypes.startswith": "以此值开头",
+    "matchTypes.endswith": "以此值结尾",
+    "words.note": "笔记",
+    "words.noteLower": "笔记",
+    "display.chooseTag": "请选择一个标签",
+    "display.noAttributesAdded": "未在“用于样式的目标属性”中添加属性，请到插件设置添加。",
+    "display.chooseAttributeName": "请选择属性名。",
+    "display.chooseAttributeValue": "请选择属性值。",
+    "display.choosePath": "请选择路径。",
+    "display.tagPreview": "{note}具有标签 {tag}",
+    "display.attributePreview": "{note}的 <b>{name}</b> 属性{match}。",
+    "display.pathPreview": "{note}的路径{match}",
+    "matchPreview.exact": "为 <b>{value}</b>",
+    "matchPreview.contains": "包含 <b>{value}</b>",
+    "matchPreview.whiteSpace": "包含 <b>{value}</b>",
+    "matchPreview.startswith": "以 <b>{value}</b> 开头",
+    "matchPreview.endswith": "以 <b>{value}</b> 结尾",
+    "matchPreviewPath.exact": "为 <b>{value}</b>",
+    "matchPreviewPath.contains": "包含 <b>{value}</b>",
+    "matchPreviewPath.whiteSpace": "包含 <b>{value}</b>",
+    "matchPreviewPath.startswith": "以 <b>{value}</b> 开头",
+    "matchPreviewPath.endswith": "以 <b>{value}</b> 结尾"
+};
+
+const dictionaries = { en, zh };
+let appRef = null;
+function initI18n(app) {
+    appRef = app;
+}
+function getLang() {
+    var _a, _b, _c;
+    const l = ((_a = appRef === null || appRef === void 0 ? void 0 : appRef.i18n) === null || _a === void 0 ? void 0 : _a.locale) ||
+        ((_b = appRef === null || appRef === void 0 ? void 0 : appRef.i18n) === null || _b === void 0 ? void 0 : _b.language) ||
+        ((_c = appRef === null || appRef === void 0 ? void 0 : appRef.localization) === null || _c === void 0 ? void 0 : _c.language) ||
+        (typeof navigator !== "undefined" ? navigator.language : "en") ||
+        "en";
+    const low = l.toLowerCase();
+    if (low.startsWith("zh"))
+        return "zh";
+    return "en";
+}
+/**
+ * Look up `key` in the active dictionary, falling back to English and then to
+ * `fallback`. Pass `vars` to fill `{placeholder}` slots: whole sentences are
+ * translated as one string so that translations can reorder them, instead of
+ * being glued together from fragments in English word order.
+ */
+function t(key, fallback, vars) {
+    var _a, _b, _c;
+    const dict = dictionaries[getLang()];
+    const template = (_c = (_b = (_a = dict[key]) !== null && _a !== void 0 ? _a : dictionaries.en[key]) !== null && _b !== void 0 ? _b : fallback) !== null && _c !== void 0 ? _c : key;
+    if (!vars)
+        return template;
+    return template.replace(/\{(\w+)\}/g, (match, name) => Object.prototype.hasOwnProperty.call(vars, name) ? vars[name] : match);
+}
+
 function displayText(link, settings) {
     if (link.type === 'tag') {
         if (!link.value) {
-            return "<b>Please choose a tag</b>";
+            return `<b>${t('display.chooseTag', 'Please choose a tag')}</b>`;
         }
-        return `<span class="data-link-icon data-link-text data-link-icon-after" data-link-tags="${link.value}">Note</span> has tag <a class="tag">#${link.value}</a>`;
+        return t('display.tagPreview', '{note} has tag {tag}', {
+            note: `<span class="data-link-icon data-link-text data-link-icon-after" data-link-tags="${link.value}">${t('words.note', 'Note')}</span>`,
+            tag: `<a class="tag">#${link.value}</a>`
+        });
     }
     else if (link.type === 'attribute') {
         if (settings.targetAttributes.length === 0) {
-            return `<b>No attributes added to "Target attributes". Go to plugin settings to add them.</b>`;
+            return `<b>${t('display.noAttributesAdded', 'No attributes added to "Target attributes". Go to plugin settings to add them.')}</b>`;
         }
         if (!link.name) {
-            return "<b>Please choose an attribute name.</b>";
+            return `<b>${t('display.chooseAttributeName', 'Please choose an attribute name.')}</b>`;
         }
         if (!link.value) {
-            return "<b>Please choose an attribute value.</b>";
+            return `<b>${t('display.chooseAttributeValue', 'Please choose an attribute value.')}</b>`;
         }
-        return `<span class="data-link-icon data-link-text data-link-icon-after" data-link-${link.name}="${link.value}">Note</span> has attribute <b>${link.name.replace(/-/g, ' ')}</b> ${matchPreview[link.match]} <b>${link.value}</b>.`;
+        const value = { value: link.value };
+        const matchPreview = {
+            'exact': t('matchPreview.exact', "with value <b>{value}</b>", value),
+            'contains': t('matchPreview.contains', "containing <b>{value}</b>", value),
+            'whiteSpace': t('matchPreview.whiteSpace', "containing <b>{value}</b>", value),
+            'startswith': t('matchPreview.startswith', "starting with <b>{value}</b>", value),
+            'endswith': t('matchPreview.endswith', "ending with <b>{value}</b>", value)
+        };
+        return t('display.attributePreview', '{note} has attribute <b>{name}</b> {match}.', {
+            note: `<span class="data-link-icon data-link-text data-link-icon-after" data-link-${link.name}="${link.value}">${t('words.note', 'Note')}</span>`,
+            name: link.name.replace(/-/g, ' '),
+            match: matchPreview[link.match]
+        });
     }
     if (!link.value) {
-        return "<b>Please choose a path.</b>";
+        return `<b>${t('display.choosePath', 'Please choose a path.')}</b>`;
     }
-    return `The path of the <span class="data-link-icon data-link-text data-link-icon-after" data-link-path="${link.value}">note</span> ${matchPreviewPath[link.match]} <b>${link.value}</b>`;
+    const value = { value: link.value };
+    const matchPreviewPath = {
+        'exact': t('matchPreviewPath.exact', "is <b>{value}</b>", value),
+        'contains': t('matchPreviewPath.contains', "contains <b>{value}</b>", value),
+        'whiteSpace': t('matchPreviewPath.whiteSpace', "contains <b>{value}</b>", value),
+        'startswith': t('matchPreviewPath.startswith', "starts with <b>{value}</b>", value),
+        'endswith': t('matchPreviewPath.endswith', "ends with <b>{value}</b>", value)
+    };
+    return t('display.pathPreview', 'The path of the {note} {match}', {
+        note: `<span class="data-link-icon data-link-text data-link-icon-after" data-link-path="${link.value}">${t('words.noteLower', 'note')}</span>`,
+        match: matchPreviewPath[link.match]
+    });
 }
 function updateDisplay(textArea, link, settings) {
     let toDisplay = displayText(link, settings);
@@ -401,39 +610,37 @@ function updateDisplay(textArea, link, settings) {
             disabled = true;
         }
     }
-    textArea.innerHTML = toDisplay;
+    textArea.empty();
+    textArea.appendChild(obsidian.sanitizeHTMLToDom(toDisplay));
     return disabled;
 }
 class CSSBuilderModal extends obsidian.Modal {
     constructor(plugin, saveCallback, cssLink = null) {
         super(plugin.app);
-        this.cssLink = cssLink;
-        if (!cssLink) {
-            this.cssLink = new CSSLink();
-        }
+        this.cssLink = cssLink !== null && cssLink !== void 0 ? cssLink : new CSSLink();
         this.plugin = plugin;
         this.saveCallback = saveCallback;
     }
     onOpen() {
-        this.titleEl.setText(`Select what links to style!`);
+        this.titleEl.setText(t('modal.title', 'Select what links to style!'));
         // is tag
-        const matchAttrPlaceholder = "Attribute value to match.";
-        const matchTagPlaceholder = "Note tag to match (without #).";
-        const matchPathPlaceholder = "File path to match.";
-        const matchAttrTxt = "Attribute value";
-        const matchTagTxt = "Tag";
-        const matchPathTxt = "Path";
+        const matchAttrPlaceholder = t('placeholders.attrValue', "Attribute value to match.");
+        const matchTagPlaceholder = t('placeholders.tagValue', "Note tag to match (without #).");
+        const matchPathPlaceholder = t('placeholders.pathValue', "File path to match.");
+        const matchAttrTxt = t('labels.attrValue', "Attribute value");
+        const matchTagTxt = t('labels.tag', "Tag");
+        const matchPathTxt = t('labels.path', "Path");
         const cssLink = this.cssLink;
         const plugin = this.plugin;
         this.contentEl.addClass("supercharged-modal");
         // Type
         new obsidian.Setting(this.contentEl)
-            .setName("Type of selector")
-            .setDesc("Attributes selects YAML and DataView attributes" +
-            ", tags chooses the tags of a note, and path considers the name of the note including in what folder it is.")
+            .setName(t('modal.typeOfSelector.name', "Type of selector"))
+            .setDesc(t('modal.typeOfSelector.desc', "Attributes selects YAML and DataView attributes" +
+            ", tags chooses the tags of a note, and path considers the name of the note including in what folder it is."))
             .addDropdown(dc => {
             Object.keys(selectorType).forEach((type) => {
-                dc.addOption(type, selectorType[type]);
+                dc.addOption(type, t(`selectorType.${type}`, selectorType[type]));
                 if (type === this.cssLink.type) {
                     dc.setValue(type);
                 }
@@ -446,8 +653,8 @@ class CSSBuilderModal extends obsidian.Modal {
         });
         // attribute name
         const attrName = new obsidian.Setting(this.contentEl)
-            .setName("Attribute name")
-            .setDesc("What attribute to target? Make sure to first add target attributes to the settings at the top!")
+            .setName(t('modal.attributeName.name', "Attribute name"))
+            .setDesc(t('modal.attributeName.desc', "What attribute to target? Make sure to first add target attributes to the settings at the top!"))
             .addDropdown(dc => {
             plugin.settings.targetAttributes.forEach((attribute) => {
                 const dom_attribute = processKey(attribute);
@@ -463,23 +670,23 @@ class CSSBuilderModal extends obsidian.Modal {
         });
         // attribute value
         const attrValue = new obsidian.Setting(this.contentEl)
-            .setName("Value to match")
-            .setDesc("TODO")
-            .addText(t => {
-            t.setValue(cssLink.value);
-            t.onChange(value => {
+            .setName(t('modal.attributeValue.name', "Value to match"))
+            .setDesc(t('modal.attributeValue.desc', "Value to match."))
+            .addText(text => {
+            text.setValue(cssLink.value);
+            text.onChange(value => {
                 cssLink.value = value;
                 saveButton.setDisabled(updateDisplay(preview, cssLink, plugin.settings));
             });
         });
-        this.contentEl.createEl('h4', { text: 'Advanced' });
+        this.contentEl.createEl('h4', { text: t('modal.advanced', 'Advanced') });
         // matching type
         const matchingType = new obsidian.Setting(this.contentEl)
-            .setName("Matching type")
-            .setDesc("How to compare the attribute or path with the given value.")
+            .setName(t('modal.matchingType.name', "Matching type"))
+            .setDesc(t('modal.matchingType.desc', "How to compare the attribute or path with the given value."))
             .addDropdown(dc => {
             Object.keys(matchTypes).forEach((key) => {
-                dc.addOption(key, matchTypes[key]);
+                dc.addOption(key, t(`matchTypes.${key}`, matchTypes[key]));
                 if (key == cssLink.match) {
                     dc.setValue(key);
                 }
@@ -491,8 +698,8 @@ class CSSBuilderModal extends obsidian.Modal {
         });
         // case sensitive
         const caseSensitiveTogglerContainer = new obsidian.Setting(this.contentEl)
-            .setName("Case sensitive matching")
-            .setDesc("Should the matching of the value be case sensitive?")
+            .setName(t('modal.caseSensitive.name', "Case sensitive matching"))
+            .setDesc(t('modal.caseSensitive.desc', "Should the matching of the value be case sensitive?"))
             .addToggle(b => {
             b.setValue(cssLink.matchCaseSensitive);
             b.onChange(value => {
@@ -527,47 +734,46 @@ class CSSBuilderModal extends obsidian.Modal {
             }
         };
         new obsidian.Setting(this.contentEl)
-            .setName("Style options")
-            .setDesc("What styling options are active? " +
-            "Disabling options you won't use can improve performance slightly.")
-            .addToggle(t => {
-            t.onChange(value => {
+            .setName(t('modal.styleOptions.name', "Style options"))
+            .setDesc(t('modal.styleOptions.desc', "What styling options are active? " +
+            "Disabling options you won't use can improve performance slightly."))
+            .addToggle(comp => {
+            comp.onChange(value => {
                 cssLink.selectText = value;
             });
-            t.setValue(cssLink.selectText);
-            t.setTooltip("Style link text");
+            comp.setValue(cssLink.selectText);
+            comp.setTooltip(t('modal.styleOptions.text.tooltip', "Style link text"));
         })
-            .addToggle(t => {
-            t.onChange(value => {
+            .addToggle(comp => {
+            comp.onChange(value => {
                 cssLink.selectPrepend = value;
             });
-            t.setValue(cssLink.selectPrepend);
-            t.setTooltip("Add content before link");
+            comp.setValue(cssLink.selectPrepend);
+            comp.setTooltip(t('modal.styleOptions.prepend.tooltip', "Add content before link"));
         })
-            .addToggle(t => {
-            t.onChange(value => {
+            .addToggle(comp => {
+            comp.onChange(value => {
                 cssLink.selectAppend = value;
             });
-            t.setValue(cssLink.selectAppend);
-            t.setTooltip("Add content after link");
+            comp.setValue(cssLink.selectAppend);
+            comp.setTooltip(t('modal.styleOptions.append.tooltip', "Add content after link"));
         })
-            .addToggle(t => {
-            t.onChange(value => {
+            .addToggle(comp => {
+            comp.onChange(value => {
                 cssLink.selectBackground = value;
             });
-            t.setValue(cssLink.selectBackground);
-            t.setTooltip("Add optional background or underline to link");
+            comp.setValue(cssLink.selectBackground);
+            comp.setTooltip(t('modal.styleOptions.background.tooltip', "Add optional background or underline to link"));
         });
-        this.contentEl.createEl('h4', { text: 'Result' });
-        const modal = this;
+        this.contentEl.createEl('h4', { text: t('modal.result', 'Result') });
         const saveButton = new obsidian.Setting(this.contentEl)
-            .setName("Preview")
+            .setName(t('modal.preview', "Preview"))
             .setDesc("")
             .addButton(b => {
-            b.setButtonText("Save");
+            b.setButtonText(t('modal.save', "Save"));
             b.onClick(() => {
-                modal.saveCallback(cssLink);
-                modal.close();
+                this.saveCallback(cssLink);
+                this.close();
             });
         });
         // generate button
@@ -636,350 +842,348 @@ function hash(uid) {
     hash = Math.abs(hash);
     return hash;
 }
-function buildCSS(selectors, plugin) {
-    return __awaiter(this, void 0, void 0, function* () {
-        var _a;
-        const instructions = [
-            "/* WARNING: This file will be overwritten by the plugin.",
-            "Do not edit this file directly! First copy this file and rename it if you want to edit things. */",
-            "",
-            ":root {"
-        ];
-        selectors.forEach((selector, i) => {
-            if (selector.selectText) {
-                instructions.push(`    --${selector.uid}-color: ${colors[hash(selector.uid) % 36]};`);
-                instructions.push(`    --${selector.uid}-weight: initial;`);
-            }
-            if (selector.selectPrepend) {
-                instructions.push(`    --${selector.uid}-before: '';`);
-            }
-            if (selector.selectAppend) {
-                instructions.push(`    --${selector.uid}-after: '';`);
-            }
-            if (selector.selectBackground) {
-                instructions.push(`    --${selector.uid}-background-color: #ffffff;`);
-                instructions.push(`    --${selector.uid}-decoration: initial;`);
-            }
-        });
-        instructions.push("}");
-        selectors.forEach(selector => {
-            let cssSelector;
-            if (selector.type === 'attribute') {
-                cssSelector = `[data-link-${selector.name}${matchSign[selector.match]}="${selector.value}" ${selector.matchCaseSensitive ? "" : " i"}]`;
-            }
-            else if (selector.type === 'tag') {
-                cssSelector = `[data-link-tags*="${selector.value}" i]`;
-            }
-            else {
-                cssSelector = `[data-link-path${matchSign[selector.match]}="${selector.value}" ${selector.matchCaseSensitive ? "" : "i"}]`;
-            }
-            if (selector.selectText) {
-                instructions.push(...[
-                    "",
-                    `div[data-id="${selector.uid}"] div.setting-item-description,`,
-                    cssSelector + " {",
-                    `    color: var(--${selector.uid}-color) !important;`,
-                    `    font-weight: var(--${selector.uid}-weight);`,
-                    "}"
-                ]);
-            }
-            if (selector.selectBackground) {
-                instructions.push(...["",
-                    `.c-${selector.uid}-use-background div[data-id="${selector.uid}"] div.setting-item-description,`,
-                    `.c-${selector.uid}-use-background .data-link-text${cssSelector} {`,
-                    `    background-color: var(--${selector.uid}-background-color) !important;`,
-                    `    border-radius: 5px;`,
-                    `    padding-left: 2px;`,
-                    `    padding-right: 2px;`,
-                    `    text-decoration: var(--${selector.uid}-decoration) !important;`,
-                    "}"]);
-            }
-            if (selector.selectPrepend) {
-                instructions.push(...["",
-                    `div[data-id="${selector.uid}"] div.setting-item-description::before,`,
-                    `.data-link-icon${cssSelector}::before {`,
-                    `    content: var(--${selector.uid}-before);`,
-                    "}"]);
-            }
-            if (selector.selectAppend) {
-                instructions.push(...["",
-                    `div[data-id="${selector.uid}"] div.setting-item-description::after,`,
-                    `.data-link-icon-after${cssSelector}::after {`,
-                    `    content: var(--${selector.uid}-after);`,
-                    "}"]);
-            }
-        });
+async function buildCSS(selectors, plugin) {
+    const instructions = [
+        "/* WARNING: This file will be overwritten by the plugin.",
+        "Do not edit this file directly! First copy this file and rename it if you want to edit things. */",
+        "",
+        ":root {"
+    ];
+    selectors.forEach((selector) => {
+        if (selector.selectText) {
+            instructions.push(`    --${selector.uid}-color: ${colors[hash(selector.uid) % 36]};`);
+            instructions.push(`    --${selector.uid}-weight: initial;`);
+        }
+        if (selector.selectPrepend) {
+            instructions.push(`    --${selector.uid}-before: '';`);
+        }
+        if (selector.selectAppend) {
+            instructions.push(`    --${selector.uid}-after: '';`);
+        }
+        if (selector.selectBackground) {
+            instructions.push(`    --${selector.uid}-background-color: #ffffff;`);
+            instructions.push(`    --${selector.uid}-decoration: initial;`);
+        }
+    });
+    instructions.push("}");
+    selectors.forEach(selector => {
+        let cssSelector;
+        if (selector.type === 'attribute') {
+            cssSelector = `[data-link-${selector.name}${matchSign[selector.match]}="${selector.value}" ${selector.matchCaseSensitive ? "" : " i"}]`;
+        }
+        else if (selector.type === 'tag') {
+            cssSelector = `[data-link-tags*="${selector.value}" i]`;
+        }
+        else {
+            cssSelector = `[data-link-path${matchSign[selector.match]}="${selector.value}" ${selector.matchCaseSensitive ? "" : "i"}]`;
+        }
+        if (selector.selectText) {
+            instructions.push(...[
+                "",
+                `div[data-id="${selector.uid}"] div.setting-item-description,`,
+                cssSelector + " {",
+                `    color: var(--${selector.uid}-color) !important;`,
+                `    font-weight: var(--${selector.uid}-weight);`,
+                "}"
+            ]);
+        }
+        if (selector.selectBackground) {
+            instructions.push(...["",
+                `.c-${selector.uid}-use-background div[data-id="${selector.uid}"] div.setting-item-description,`,
+                `.c-${selector.uid}-use-background .data-link-text${cssSelector} {`,
+                `    background-color: var(--${selector.uid}-background-color) !important;`,
+                `    border-radius: 5px;`,
+                `    padding-left: 2px;`,
+                `    padding-right: 2px;`,
+                `    text-decoration: var(--${selector.uid}-decoration) !important;`,
+                "}"]);
+        }
+        if (selector.selectPrepend) {
+            instructions.push(...["",
+                `div[data-id="${selector.uid}"] div.setting-item-description::before,`,
+                `.data-link-icon${cssSelector}::before {`,
+                `    content: var(--${selector.uid}-before);`,
+                "}"]);
+        }
+        if (selector.selectAppend) {
+            instructions.push(...["",
+                `div[data-id="${selector.uid}"] div.setting-item-description::after,`,
+                `.data-link-icon-after${cssSelector}::after {`,
+                `    content: var(--${selector.uid}-after);`,
+                "}"]);
+        }
+    });
+    instructions.push(...[
+        "/* @settings",
+        "name: Supercharged Links",
+        "id: supercharged-links",
+        "settings:",
+    ]);
+    selectors.forEach((selector) => {
+        let name = selector.name;
+        let value = selector.value;
+        if (selector.type === 'tag') {
+            name = 'tag';
+            // value = "\#" + value;
+        }
+        else if (selector.type === 'path') {
+            name = 'path';
+        }
         instructions.push(...[
-            "/* @settings",
-            "name: Supercharged Links",
-            "id: supercharged-links",
-            "settings:",
+            "    - ",
+            `        id: ${selector.uid}`,
+            `        title: ${name} is ${value}`,
+            `        description: Example note`,
+            "        type: heading",
+            "        collapsed: true",
+            "        level: 3"
         ]);
-        selectors.forEach((selector, i) => {
-            let name = selector.name;
-            let value = selector.value;
-            if (selector.type === 'tag') {
-                name = 'tag';
-                // value = "\#" + value;
-            }
-            else if (selector.type === 'path') {
-                name = 'path';
-            }
+        if (selector.selectText) {
             instructions.push(...[
                 "    - ",
-                `        id: ${selector.uid}`,
-                `        title: ${name} is ${value}`,
-                `        description: Example note`,
-                "        type: heading",
-                "        collapsed: true",
-                "        level: 3"
+                `        id: ${selector.uid}-color`,
+                `        title: Link color`,
+                "        type: variable-color",
+                "        format: hex",
+                `        default: '${colors[hash(selector.uid) % 36]}'`,
+                "    - ",
+                `        id: ${selector.uid}-weight`,
+                `        title: Font weight`,
+                "        type: variable-select",
+                `        default: initial`,
+                `        options:`,
+                `            - initial`,
+                `            - lighter`,
+                `            - normal`,
+                `            - bold`,
+                `            - bolder`,
+                "    - ",
+                `        id: ${selector.uid}-decoration`,
+                `        title: Font decoration`,
+                "        type: variable-select",
+                `        default: initial`,
+                `        options:`,
+                `            - initial`,
+                `            - underline`,
+                `            - overline`,
+                `            - line-through`
             ]);
-            if (selector.selectText) {
-                instructions.push(...[
-                    "    - ",
-                    `        id: ${selector.uid}-color`,
-                    `        title: Link color`,
-                    "        type: variable-color",
-                    "        format: hex",
-                    `        default: '${colors[hash(selector.uid) % 36]}'`,
-                    "    - ",
-                    `        id: ${selector.uid}-weight`,
-                    `        title: Font weight`,
-                    "        type: variable-select",
-                    `        default: initial`,
-                    `        options:`,
-                    `            - initial`,
-                    `            - lighter`,
-                    `            - normal`,
-                    `            - bold`,
-                    `            - bolder`,
-                    "    - ",
-                    `        id: ${selector.uid}-decoration`,
-                    `        title: Font decoration`,
-                    "        type: variable-select",
-                    `        default: initial`,
-                    `        options:`,
-                    `            - initial`,
-                    `            - underline`,
-                    `            - overline`,
-                    `            - line-through`
-                ]);
-            }
-            if (selector.selectPrepend) {
-                instructions.push(...["    - ",
-                    `        id: ${selector.uid}-before`,
-                    `        title: Prepend text`,
-                    `        description: Add some text, such as an emoji, before the links.`,
-                    "        type: variable-text",
-                    `        default: ''`,
-                    `        quotes: true`]);
-            }
-            if (selector.selectAppend) {
-                instructions.push(...["    - ",
-                    `        id: ${selector.uid}-after`,
-                    `        title: Append text`,
-                    `        description: Add some text, such as an emoji, after the links.`,
-                    "        type: variable-text",
-                    `        default: ''`,
-                    `        quotes: true`]);
-            }
-            if (selector.selectBackground) {
-                instructions.push(...["    - ",
-                    `        id: c-${selector.uid}-use-background`,
-                    `        title: Use background color`,
-                    `        description: Adds a background color to the link. This can look buggy in live preview.`,
-                    "        type: class-toggle",
-                    "    - ",
-                    `        id: ${selector.uid}-background-color`,
-                    `        title: Background color`,
-                    "        type: variable-color",
-                    "        format: hex",
-                    `        default: '#ffffff'`]);
-            }
-        });
-        instructions.push("*/");
-        const vault = plugin.app.vault;
-        const configDir = (_a = vault.configDir) !== null && _a !== void 0 ? _a : ".obsidian";
-        const pathDir = configDir + "/snippets";
-        yield vault.adapter.mkdir(pathDir);
-        const path = pathDir + "/supercharged-links-gen.css";
-        if (yield vault.adapter.exists(path)) {
-            yield vault.adapter.remove(path);
         }
-        yield plugin.app.vault.create(path, instructions.join('\n'));
-        // Activate snippet
-        if (plugin.settings.activateSnippet) {
-            // @ts-ignore
-            const customCss = plugin.app.customCss;
-            customCss.enabledSnippets.add('supercharged-links-gen');
-            customCss.requestLoadSnippets();
+        if (selector.selectPrepend) {
+            instructions.push(...["    - ",
+                `        id: ${selector.uid}-before`,
+                `        title: Prepend text`,
+                `        description: Add some text, such as an emoji, before the links.`,
+                "        type: variable-text",
+                `        default: ''`,
+                `        quotes: true`]);
         }
-        // Ensure Style Settings reads changes
-        plugin.app.workspace.trigger("parse-style-settings");
+        if (selector.selectAppend) {
+            instructions.push(...["    - ",
+                `        id: ${selector.uid}-after`,
+                `        title: Append text`,
+                `        description: Add some text, such as an emoji, after the links.`,
+                "        type: variable-text",
+                `        default: ''`,
+                `        quotes: true`]);
+        }
+        if (selector.selectBackground) {
+            instructions.push(...["    - ",
+                `        id: c-${selector.uid}-use-background`,
+                `        title: Use background color`,
+                `        description: Adds a background color to the link. This can look buggy in live preview.`,
+                "        type: class-toggle",
+                "    - ",
+                `        id: ${selector.uid}-background-color`,
+                `        title: Background color`,
+                "        type: variable-color",
+                "        format: hex",
+                `        default: '#ffffff'`]);
+        }
     });
+    instructions.push("*/");
+    const vault = plugin.app.vault;
+    const configDir = vault.configDir;
+    const pathDir = configDir + "/snippets";
+    await vault.adapter.mkdir(pathDir);
+    const path = pathDir + "/supercharged-links-gen.css";
+    if (await vault.adapter.exists(path)) {
+        await vault.adapter.remove(path);
+    }
+    await plugin.app.vault.create(path, instructions.join('\n'));
+    // Activate snippet
+    if (plugin.settings.activateSnippet) {
+        const customCss = plugin.app.customCss;
+        customCss.enabledSnippets.add('supercharged-links-gen');
+        customCss.requestLoadSnippets();
+    }
+    // Ensure Style Settings reads changes
+    plugin.app.workspace.trigger("parse-style-settings");
 }
 
 class SuperchargedLinksSettingTab extends obsidian.PluginSettingTab {
     constructor(app, plugin) {
         super(app, plugin);
         this.plugin = plugin;
-        this.debouncedGenerate = obsidian.debounce(this._generateSnippet, 1000, true);
+        this.debouncedGenerate = obsidian.debounce(() => this._generateSnippet(), 1000, true);
         // Generate CSS immediately rather than 1 second - feels laggy
-        this._generateSnippet();
+        void this._generateSnippet();
     }
     display() {
         let { containerEl } = this;
         containerEl.empty();
         /* Managing extra attirbutes for a.internal-link */
         new obsidian.Setting(containerEl)
-            .setName('Target Attributes for styling')
-            .setDesc('Frontmatter attributes to target, comma separated')
+            .setName(t('settings.targetAttributes.name', 'Target Attributes for styling'))
+            .setDesc(t('settings.targetAttributes.desc', 'Frontmatter attributes to target, comma separated'))
             .addTextArea((text) => {
             text
-                .setPlaceholder('Enter attributes as string, comma separated')
+                .setPlaceholder(t('settings.targetAttributes.placeholder', 'Enter attributes as string, comma separated'))
                 .setValue(this.plugin.settings.targetAttributes.join(', '))
-                .onChange((value) => __awaiter(this, void 0, void 0, function* () {
+                .onChange(async (value) => {
                 this.plugin.settings.targetAttributes = value.split(',').map(attr => attr.trim());
                 if (this.plugin.settings.targetAttributes.length === 1 && !this.plugin.settings.targetAttributes[0]) {
                     this.plugin.settings.targetAttributes = [];
                 }
-                yield this.plugin.saveSettings();
-            }));
+                await this.plugin.saveSettings();
+            });
             text.inputEl.rows = 6;
             text.inputEl.cols = 25;
         });
-        containerEl.createEl('h4', { text: 'Styling' });
+        new obsidian.Setting(containerEl)
+            .setName(t('sections.styling', 'Styling'))
+            .setHeading();
         const styleSettingDescription = containerEl.createDiv();
-        styleSettingDescription.innerHTML = `
-Styling can be done using the Style Settings plugin. 
+        styleSettingDescription.appendChild(obsidian.sanitizeHTMLToDom(t('styling.helper.html', `Styling can be done using the Style Settings plugin. 
  <ol>
  <li>Create selectors down below.</li>
  <li>Go to the Style Settings tab and style your links!</li>
-</ol>`;
+</ol>`)));
         const selectorDiv = containerEl.createDiv();
         this.drawSelectors(selectorDiv);
-        containerEl.createEl('h4', { text: 'Settings' });
         new obsidian.Setting(containerEl)
-            .setName('Enable in Editor')
-            .setDesc('If true, this will also supercharge internal links in the editor view of a note.')
+            .setName(t('sections.settings', 'Settings'))
+            .setHeading();
+        new obsidian.Setting(containerEl)
+            .setName(t('settings.enableEditor.name', 'Enable in Editor'))
+            .setDesc(t('settings.enableEditor.desc', 'If true, this will also supercharge internal links in the editor view of a note.'))
             .addToggle(toggle => {
             toggle.setValue(this.plugin.settings.enableEditor);
-            toggle.onChange(value => {
+            toggle.onChange(async (value) => {
                 this.plugin.settings.enableEditor = value;
-                this.plugin.saveSettings();
+                await this.plugin.saveSettings();
                 updateVisibleLinks(this.app, this.plugin);
             });
         });
         new obsidian.Setting(containerEl)
-            .setName('Enable in tab headers')
-            .setDesc('If true, this will also supercharge the headers of a tab.')
+            .setName(t('settings.enableTabHeader.name', 'Enable in tab headers'))
+            .setDesc(t('settings.enableTabHeader.desc', 'If true, this will also supercharge the headers of a tab.'))
             .addToggle(toggle => {
             toggle.setValue(this.plugin.settings.enableTabHeader);
-            toggle.onChange(value => {
+            toggle.onChange(async (value) => {
                 this.plugin.settings.enableTabHeader = value;
-                this.plugin.saveSettings();
+                await this.plugin.saveSettings();
                 updateVisibleLinks(this.app, this.plugin);
             });
         });
         new obsidian.Setting(containerEl)
-            .setName('Enable in File Browser')
-            .setDesc('If true, this will also supercharge the file browser.')
+            .setName(t('settings.enableFileList.name', 'Enable in File Browser'))
+            .setDesc(t('settings.enableFileList.desc', 'If true, this will also supercharge the file browser.'))
             .addToggle(toggle => {
             toggle.setValue(this.plugin.settings.enableFileList);
-            toggle.onChange(value => {
+            toggle.onChange(async (value) => {
                 this.plugin.settings.enableFileList = value;
-                this.plugin.saveSettings();
+                await this.plugin.saveSettings();
             });
         });
         new obsidian.Setting(containerEl)
-            .setName('Enable in Bases')
-            .setDesc('If true, this will also supercharge Obsidian Bases.')
+            .setName(t('settings.enableBases.name', 'Enable in Bases'))
+            .setDesc(t('settings.enableBases.desc', 'If true, this will also supercharge Obsidian Bases.'))
             .addToggle(toggle => {
             toggle.setValue(this.plugin.settings.enableBases);
-            toggle.onChange(value => {
+            toggle.onChange(async (value) => {
                 this.plugin.settings.enableBases = value;
-                this.plugin.saveSettings();
+                await this.plugin.saveSettings();
             });
         });
         new obsidian.Setting(containerEl)
-            .setName('Enable in Plugins')
-            .setDesc('If true, this will also supercharge plugins like the backlinks and forward links panels.')
+            .setName(t('settings.enableBacklinks.name', 'Enable in Plugins'))
+            .setDesc(t('settings.enableBacklinks.desc', 'If true, this will also supercharge plugins like the backlinks and forward links panels.'))
             .addToggle(toggle => {
             toggle.setValue(this.plugin.settings.enableBacklinks);
-            toggle.onChange(value => {
+            toggle.onChange(async (value) => {
                 this.plugin.settings.enableBacklinks = value;
-                this.plugin.saveSettings();
+                await this.plugin.saveSettings();
             });
         });
         new obsidian.Setting(containerEl)
-            .setName('Enable in Quick Switcher')
-            .setDesc('If true, this will also supercharge the quick switcher.')
+            .setName(t('settings.enableQuickSwitcher.name', 'Enable in Quick Switcher'))
+            .setDesc(t('settings.enableQuickSwitcher.desc', 'If true, this will also supercharge the quick switcher.'))
             .addToggle(toggle => {
             toggle.setValue(this.plugin.settings.enableQuickSwitcher);
-            toggle.onChange(value => {
+            toggle.onChange(async (value) => {
                 this.plugin.settings.enableQuickSwitcher = value;
-                this.plugin.saveSettings();
+                await this.plugin.saveSettings();
             });
         });
         new obsidian.Setting(containerEl)
-            .setName('Enable in Link Autocompleter')
-            .setDesc('If true, this will also supercharge the link autocompleter.')
+            .setName(t('settings.enableSuggestor.name', 'Enable in Link Autocompleter'))
+            .setDesc(t('settings.enableSuggestor.desc', 'If true, this will also supercharge the link autocompleter.'))
             .addToggle(toggle => {
             toggle.setValue(this.plugin.settings.enableSuggestor);
-            toggle.onChange(value => {
+            toggle.onChange(async (value) => {
                 this.plugin.settings.enableSuggestor = value;
-                this.plugin.saveSettings();
+                await this.plugin.saveSettings();
             });
         });
-        containerEl.createEl('h4', { text: 'Advanced' });
+        new obsidian.Setting(containerEl)
+            .setName(t('sections.advanced', 'Advanced'))
+            .setHeading();
         // Managing choice wether you want to parse tags both from normal tags and in the frontmatter
         new obsidian.Setting(containerEl)
-            .setName('Parse all tags in the file')
-            .setDesc('Sets the `data-link-tags`-attribute to look for tags both in the frontmatter and in the file as #tag-name')
+            .setName(t('settings.targetTags.name', 'Parse all tags in the file'))
+            .setDesc(t('settings.targetTags.desc', 'Sets the `data-link-tags`-attribute to look for tags both in the frontmatter and in the file as #tag-name'))
             .addToggle(toggle => {
             toggle.setValue(this.plugin.settings.targetTags);
-            toggle.onChange((value) => __awaiter(this, void 0, void 0, function* () {
+            toggle.onChange(async (value) => {
                 this.plugin.settings.targetTags = value;
-                yield this.plugin.saveSettings();
-            }));
+                await this.plugin.saveSettings();
+            });
         });
         // Managing choice wether you get attributes from inline fields and frontmatter or only frontmater
         new obsidian.Setting(containerEl)
-            .setName('Search for attribute in Inline fields like <field::>')
-            .setDesc('Sets the `data-link-<field>`-attribute to the value of inline fields')
+            .setName(t('settings.getFromInlineField.name', 'Search for attribute in Inline fields like <field::>'))
+            .setDesc(t('settings.getFromInlineField.desc', 'Sets the `data-link-<field>`-attribute to the value of inline fields'))
             .addToggle(toggle => {
             toggle.setValue(this.plugin.settings.getFromInlineField);
-            toggle.onChange((value) => __awaiter(this, void 0, void 0, function* () {
+            toggle.onChange(async (value) => {
                 this.plugin.settings.getFromInlineField = value;
-                yield this.plugin.saveSettings();
-            }));
+                await this.plugin.saveSettings();
+            });
         });
         // Automatically activate snippet
         new obsidian.Setting(containerEl)
-            .setName('Automatically activate snippet')
-            .setDesc('If true, this will automatically activate the generated CSS snippet "supercharged-links-gen.css". ' +
-            'Turn this off if you don\'t want this to happen.')
+            .setName(t('settings.activateSnippet.name', 'Automatically activate snippet'))
+            .setDesc(t('settings.activateSnippet.desc', 'If true, this will automatically activate the generated CSS snippet "supercharged-links-gen.css". Turn this off if you don\'t want this to happen.'))
             .addToggle(toggle => {
             toggle.setValue(this.plugin.settings.activateSnippet);
-            toggle.onChange((value) => __awaiter(this, void 0, void 0, function* () {
+            toggle.onChange(async (value) => {
                 this.plugin.settings.activateSnippet = value;
-                yield this.plugin.saveSettings();
-            }));
+                await this.plugin.saveSettings();
+            });
         });
         /* Managing predefined values for properties */
         /* Manage menu options display*/
         new obsidian.Setting(containerEl)
-            .setName("Display field options in context menu")
-            .setDesc("This feature has been migrated to metadata-menu plugin https://github.com/mdelobelle/metadatamenu");
+            .setName(t('settings.deprecatedMenu.name', 'Display field options in context menu'))
+            .setDesc(t('settings.deprecatedMenu.desc', 'This feature has been migrated to metadata-menu plugin https://github.com/mdelobelle/metadatamenu'));
     }
     generateSnippet() {
         this.debouncedGenerate();
     }
-    _generateSnippet() {
-        return __awaiter(this, void 0, void 0, function* () {
-            yield buildCSS(this.plugin.settings.selectors, this.plugin);
-            // new Notice("Generated supercharged-links-gen.css");
-        });
+    async _generateSnippet() {
+        await buildCSS(this.plugin.settings.selectors, this.plugin);
+        // new Notice("Generated supercharged-links-gen.css");
     }
     drawSelectors(div) {
         div.empty();
@@ -995,7 +1199,7 @@ Styling can be done using the Style Settings plugin.
                     this.drawSelectors(div);
                 });
                 button.setIcon("down-arrow-with-tail");
-                button.setTooltip("Move selector down");
+                button.setTooltip(t('selectors.tooltip.moveDown', 'Move selector down'));
                 if (i === selectors.length - 1) {
                     button.setDisabled(true);
                 }
@@ -1008,7 +1212,7 @@ Styling can be done using the Style Settings plugin.
                     this.drawSelectors(div);
                 });
                 button.setIcon("up-arrow-with-tail");
-                button.setTooltip("Move selector up");
+                button.setTooltip(t('selectors.tooltip.moveUp', 'Move selector up'));
                 if (i === 0) {
                     button.setDisabled(true);
                 }
@@ -1017,40 +1221,40 @@ Styling can be done using the Style Settings plugin.
                 button.onClick(() => {
                     const formModal = new CSSBuilderModal(this.plugin, (newSelector) => {
                         this.plugin.settings.selectors[i] = newSelector;
-                        this.plugin.saveSettings();
+                        void this.plugin.saveSettings();
                         updateDisplay(s.nameEl, selector, this.plugin.settings);
                         this.generateSnippet();
                     }, selector);
                     formModal.open();
                 });
                 button.setIcon("pencil");
-                button.setTooltip("Edit selector");
+                button.setTooltip(t('selectors.tooltip.edit', 'Edit selector'));
             })
                 .addButton(button => {
                 button.onClick(() => {
                     this.plugin.settings.selectors.remove(selector);
-                    this.plugin.saveSettings();
+                    void this.plugin.saveSettings();
                     this.drawSelectors(div);
                 });
                 button.setIcon("cross");
-                button.setTooltip("Remove selector");
+                button.setTooltip(t('selectors.tooltip.remove', 'Remove selector'));
             });
             updateDisplay(s.nameEl, selector, this.plugin.settings);
         });
         new obsidian.Setting(div)
-            .setName("New selector")
-            .setDesc("Create a new selector to style with Style Settings.")
+            .setName(t('selectors.new.name', 'New selector'))
+            .setDesc(t('selectors.new.desc', 'Create a new selector to style with Style Settings.'))
             .addButton(button => {
             button.onClick(() => {
                 const formModal = new CSSBuilderModal(this.plugin, (newSelector) => {
                     this.plugin.settings.selectors.push(newSelector);
-                    this.plugin.saveSettings();
+                    void this.plugin.saveSettings();
                     this.drawSelectors(div);
                     // TODO: Force redraw somehow?
                 });
                 formModal.open();
             });
-            button.setButtonText("New");
+            button.setButtonText(t('selectors.button.new', 'New'));
         });
     }
 }
@@ -1082,7 +1286,7 @@ function buildCMViewPlugin(app, _settings) {
         }
         toDOM() {
             var _a;
-            let headerEl = document.createElement("span");
+            const headerEl = createSpan();
             headerEl.setAttrs(this.attributes);
             for (let key in this.attributes) {
                 // CSS doesn't allow interpolation of variables for URLs, so do it beforehand to be nice.
@@ -1114,7 +1318,7 @@ function buildCMViewPlugin(app, _settings) {
         update(update) {
             if (update.docChanged) {
                 this.decorations = this.decorations.map(update.changes);
-                update.changes.iterChanges((fromA, toA, fromB, toB, t) => {
+                update.changes.iterChanges((_fromA, _toA, fromB, toB) => {
                     // Update all 'line blocks' between the range changed. Prevents weird graphical bugs
                     const minFrom = update.view.lineBlockAt(fromB).from;
                     const maxTo = update.view.lineBlockAt(toB).to;
@@ -1138,7 +1342,7 @@ function buildCMViewPlugin(app, _settings) {
             if (!settings.enableEditor) {
                 return builder.finish();
             }
-            const mdView = view$1.state.field(obsidian.editorViewField);
+            const mdInfo = view$1.state.field(obsidian.editorInfoField);
             let lastAttributes = {};
             let iconDecoAfter = null;
             let iconDecoAfterWhere = null;
@@ -1152,6 +1356,7 @@ function buildCMViewPlugin(app, _settings) {
                     from,
                     to,
                     enter: (node) => {
+                        var _a, _b;
                         if (updateFrom !== -1 && (node.to < updateFrom || node.from > updateTo))
                             return;
                         const tokenProps = node.type.prop(language.tokenClassNodeProp);
@@ -1185,12 +1390,18 @@ function buildCMViewPlugin(app, _settings) {
                             if (isLink && !isAlias && !isPipe || isMDUrl) {
                                 let linkText = view$1.state.doc.sliceString(node.from, node.to);
                                 linkText = linkText.split("#")[0];
-                                let file = app.metadataCache.getFirstLinkpathDest(linkText, mdView.file.basename);
+                                let file = app.metadataCache.getFirstLinkpathDest(linkText, (_b = (_a = mdInfo.file) === null || _a === void 0 ? void 0 : _a.basename) !== null && _b !== void 0 ? _b : "");
                                 if (isMDUrl && !file) {
                                     try {
-                                        file = app.vault.getAbstractFileByPath(decodeURIComponent(linkText));
+                                        const target = app.vault.getAbstractFileByPath(decodeURIComponent(linkText));
+                                        if (target instanceof obsidian.TFile) {
+                                            file = target;
+                                        }
                                     }
-                                    catch (e) { }
+                                    catch (_c) {
+                                        // decodeURIComponent throws on malformed escape sequences;
+                                        // such a link simply has no target to supercharge.
+                                    }
                                 }
                                 if (file) {
                                     let _attributes = fetchTargetAttributesSync(app, settings, file, true);
@@ -1214,6 +1425,7 @@ function buildCMViewPlugin(app, _settings) {
                                             attributes: attributes,
                                             class: "data-link-text"
                                         });
+                                        // A markdown URL is only reached after its alias node set these.
                                         builder.add(mdAliasFrom, mdAliasFrom, iconDecoBefore);
                                         builder.add(mdAliasFrom, mdAliasTo, deco);
                                         if (iconDecoAfter) {
@@ -1261,54 +1473,51 @@ class SuperchargedLinks extends obsidian.Plugin {
         super(...arguments);
         this.modalObservers = [];
     }
-    onload() {
-        return __awaiter(this, void 0, void 0, function* () {
-            console.log('Supercharged links loaded');
-            yield this.loadSettings();
-            this.addSettingTab(new SuperchargedLinksSettingTab(this.app, this));
-            this.registerMarkdownPostProcessor((el, ctx) => {
-                updateElLinks(this.app, this, el, ctx);
-            });
-            const plugin = this;
-            const updateLinks = function (_file) {
-                updateVisibleLinks(plugin.app, plugin);
-                plugin.observers.forEach(([observer, type, own_class]) => {
-                    const leaves = plugin.app.workspace.getLeavesOfType(type);
-                    leaves.forEach(leaf => {
-                        plugin.updateContainer(leaf.view.containerEl, plugin, own_class);
-                    });
-                });
-            };
-            // Live preview
-            const ext = state.Prec.lowest(buildCMViewPlugin(this.app, this.settings));
-            this.registerEditorExtension(ext);
-            this.observers = [];
-            this.app.workspace.onLayoutReady(() => {
-                this.initViewObservers(this);
-                this.initModalObservers(this, document);
-                updateVisibleLinks(this.app, this);
-            });
-            // Initialization
-            this.registerEvent(this.app.workspace.on("window-open", (window, win) => this.initModalObservers(this, window.getContainer().doc)));
-            // Update when 
-            // Debounced to prevent lag when writing
-            this.registerEvent(this.app.metadataCache.on('changed', obsidian.debounce(updateLinks, 500, true)));
-            // Update when layout changes
-            // @ts-ignore
-            this.registerEvent(this.app.workspace.on("layout-change", obsidian.debounce(updateLinks, 10, true)));
-            // Update plugin views when layout changes
-            // TODO: This is an expensive operation that seems like it is called fairly frequently. Maybe we can do this more efficiently?
-            this.registerEvent(this.app.workspace.on("layout-change", () => this.initViewObservers(this)));
-            // DEBUG: When adding a new view, to get the proper id of that view, uncomment this and reload the plugin
-            // this.app.workspace.iterateAllLeaves(leaf => {
-            // 	console.log(leaf.view.getViewType());
-            // });
+    async onload() {
+        await this.loadSettings();
+        initI18n(this.app);
+        this.addSettingTab(new SuperchargedLinksSettingTab(this.app, this));
+        this.registerMarkdownPostProcessor((el, ctx) => {
+            updateElLinks(this.app, this, el, ctx);
         });
+        const updateLinks = (_file) => {
+            updateVisibleLinks(this.app, this);
+            this.observers.forEach(([, type, own_class]) => {
+                const leaves = this.app.workspace.getLeavesOfType(type);
+                leaves.forEach(leaf => {
+                    this.updateContainer(leaf.view.containerEl, this, own_class);
+                });
+            });
+        };
+        // Live preview
+        const ext = state.Prec.lowest(buildCMViewPlugin(this.app, this.settings));
+        this.registerEditorExtension(ext);
+        this.observers = [];
+        this.app.workspace.onLayoutReady(() => {
+            this.initViewObservers(this);
+            this.initModalObservers(this, this.app.workspace.containerEl.doc);
+            updateVisibleLinks(this.app, this);
+        });
+        // Initialization
+        this.registerEvent(this.app.workspace.on("window-open", (window) => this.initModalObservers(this, window.getContainer().doc)));
+        // Update when 
+        // Debounced to prevent lag when writing
+        this.registerEvent(this.app.metadataCache.on('changed', obsidian.debounce(updateLinks, 500, true)));
+        // Update when layout changes
+        // @ts-ignore
+        this.registerEvent(this.app.workspace.on("layout-change", obsidian.debounce(updateLinks, 10, true)));
+        // Update plugin views when layout changes
+        // TODO: This is an expensive operation that seems like it is called fairly frequently. Maybe we can do this more efficiently?
+        this.registerEvent(this.app.workspace.on("layout-change", () => this.initViewObservers(this)));
+        // DEBUG: When adding a new view, to get the proper id of that view, uncomment this and reload the plugin
+        // this.app.workspace.iterateAllLeaves(leaf => {
+        // 	console.log(leaf.view.getViewType());
+        // });
     }
     initViewObservers(plugin) {
-        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z, _0, _1;
+        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z, _0, _1, _2, _3, _4;
         // Reset observers
-        plugin.observers.forEach(([observer, type]) => {
+        plugin.observers.forEach(([observer]) => {
             observer.disconnect();
         });
         plugin.observers = [];
@@ -1333,20 +1542,22 @@ class SuperchargedLinks extends obsidian.Plugin {
         }
         plugin.registerViewType('recent-files', plugin, '.nav-file-title-content');
         plugin.registerViewType('bookmarks', plugin, '.tree-item-inner', false, true);
-        // @ts-ignore
+        plugin.registerViewType('layer-view', plugin, '.internal-link');
+        plugin.registerViewType('git-view', plugin, '.tree-item-inner');
         if (((_k = (_j = (_h = (_g = plugin.app) === null || _g === void 0 ? void 0 : _g.internalPlugins) === null || _h === void 0 ? void 0 : _h.plugins) === null || _j === void 0 ? void 0 : _j.bases) === null || _k === void 0 ? void 0 : _k.enabled) && plugin.settings.enableBases) {
             // console.log('Supercharged links: Enabling bases support');
-            plugin.registerViewType('bases', plugin, 'a.internal-link');
-            plugin.registerViewType('bases', plugin, '.internal-link > .multi-select-pill-content');
+            plugin.registerViewType('bases', plugin, 'span.internal-link');
+            plugin.registerViewType('bases', plugin, '.multi-select-pill-content');
             // For embedded bases
-            plugin.registerViewType('markdown', plugin, 'div.bases-table-cell a.internal-link');
-            plugin.registerViewType('markdown', plugin, 'div.bases-table-cell .internal-link > .multi-select-pill-content');
+            plugin.registerViewType('markdown', plugin, 'div.bases-table-cell span.internal-link');
+            plugin.registerViewType('markdown', plugin, 'div.bases-table-cell div.multi-select-pill-content');
+            plugin.registerViewType('markdown', plugin, 'div.bases-cards-line');
         }
         if ((_o = (_m = (_l = plugin.app) === null || _l === void 0 ? void 0 : _l.plugins) === null || _m === void 0 ? void 0 : _m.plugins) === null || _o === void 0 ? void 0 : _o['similar-notes']) {
             plugin.registerViewType('markdown', plugin, '.similar-notes-pane .tree-item-inner', true);
+            plugin.registerViewType('similar-notes-sidebar', plugin, '.similar-notes-pane .tree-item-inner', true);
         }
         // If backlinks in editor is on
-        // @ts-ignore
         if (((_s = (_r = (_q = (_p = plugin.app) === null || _p === void 0 ? void 0 : _p.internalPlugins) === null || _q === void 0 ? void 0 : _q.plugins) === null || _r === void 0 ? void 0 : _r.backlink) === null || _s === void 0 ? void 0 : _s.enabled) && ((_y = (_x = (_w = (_v = (_u = (_t = plugin.app) === null || _t === void 0 ? void 0 : _t.internalPlugins) === null || _u === void 0 ? void 0 : _u.plugins) === null || _v === void 0 ? void 0 : _v.backlink) === null || _w === void 0 ? void 0 : _w.instance) === null || _x === void 0 ? void 0 : _x.options) === null || _y === void 0 ? void 0 : _y.backlinkInDocument)) {
             // console.log("Supercharged links: Enabling backlinks in document support");
             plugin.registerViewType('markdown', plugin, '.embedded-backlinks .tree-item-inner', true);
@@ -1354,10 +1565,10 @@ class SuperchargedLinks extends obsidian.Plugin {
         const propertyLeaves = this.app.workspace.getLeavesOfType("file-properties");
         for (let i = 0; i < propertyLeaves.length; i++) {
             const container = propertyLeaves[i].view.containerEl;
-            let observer = new MutationObserver((records, _) => {
+            const observer = new MutationObserver(() => {
                 const file = this.app.workspace.getActiveFile();
-                if (!!file) {
-                    updatePropertiesPane(container, this.app.workspace.getActiveFile(), this.app, plugin);
+                if (file) {
+                    updatePropertiesPane(container, file, this.app, plugin);
                 }
             });
             observer.observe(container, { subtree: true, childList: true, attributes: false });
@@ -1365,9 +1576,9 @@ class SuperchargedLinks extends obsidian.Plugin {
             // TODO: No proper unloading!
         }
         plugin.registerViewType('file-properties', plugin, 'div.internal-link > .multi-select-pill-content');
-        if ((_1 = (_0 = (_z = plugin.app) === null || _z === void 0 ? void 0 : _z.plugins) === null || _0 === void 0 ? void 0 : _0.plugins) === null || _1 === void 0 ? void 0 : _1['notebook-navigator']) {
+        if (((_1 = (_0 = (_z = plugin.app) === null || _z === void 0 ? void 0 : _z.plugins) === null || _0 === void 0 ? void 0 : _0.plugins) === null || _1 === void 0 ? void 0 : _1['notebook-navigator']) || ((_4 = (_3 = (_2 = plugin.app) === null || _2 === void 0 ? void 0 : _2.plugins) === null || _3 === void 0 ? void 0 : _3.plugins) === null || _4 === void 0 ? void 0 : _4['notebook-navigator-emile'])) {
             plugin.registerViewType('notebook-navigator', plugin, 'span.nn-shortcut-label');
-            plugin.registerViewType('notebook-navigator', plugin, 'div.nn-file-name');
+            plugin.registerViewType('notebook-navigator', plugin, '.nn-file-name');
         }
     }
     initModalObservers(plugin, doc) {
@@ -1376,7 +1587,7 @@ class SuperchargedLinks extends obsidian.Plugin {
             childList: true,
             attributes: false
         };
-        this.modalObservers.push(new MutationObserver(records => {
+        const modalObserver = new MutationObserver(records => {
             records.forEach((mutation) => {
                 if (mutation.type === 'childList') {
                     mutation.addedNodes.forEach(n => {
@@ -1396,8 +1607,9 @@ class SuperchargedLinks extends obsidian.Plugin {
                     });
                 }
             });
-        }));
-        this.modalObservers.last().observe(doc.body, config);
+        });
+        this.modalObservers.push(modalObserver);
+        modalObserver.observe(doc.body, config);
     }
     registerViewType(viewTypeName, plugin, selector, updateDynamic = false, filter_collapsible = false) {
         const leaves = this.app.workspace.getLeavesOfType(viewTypeName);
@@ -1443,7 +1655,7 @@ class SuperchargedLinks extends obsidian.Plugin {
         }
     }
     _watchContainer(viewType, container, plugin, selector, filter_collapsible = false) {
-        let observer = new MutationObserver((records, _) => {
+        const observer = new MutationObserver(() => {
             plugin.updateContainer(container, plugin, selector, filter_collapsible);
         });
         observer.observe(container, { subtree: true, childList: true, attributes: false });
@@ -1456,7 +1668,7 @@ class SuperchargedLinks extends obsidian.Plugin {
         // Only loops through newly added DOM nodes instead of changing all of them
         if (!plugin.settings.enableBacklinks)
             return;
-        let observer = new MutationObserver((records, _) => {
+        const observer = new MutationObserver((records) => {
             records.forEach((mutation) => {
                 if (mutation.type === 'childList') {
                     mutation.addedNodes.forEach((n) => {
@@ -1488,17 +1700,12 @@ class SuperchargedLinks extends obsidian.Plugin {
         for (const observer of this.modalObservers) {
             observer.disconnect();
         }
-        console.log('Supercharged links unloaded');
     }
-    loadSettings() {
-        return __awaiter(this, void 0, void 0, function* () {
-            this.settings = Object.assign({}, DEFAULT_SETTINGS, yield this.loadData());
-        });
+    async loadSettings() {
+        this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
     }
-    saveSettings() {
-        return __awaiter(this, void 0, void 0, function* () {
-            yield this.saveData(this.settings);
-        });
+    async saveSettings() {
+        await this.saveData(this.settings);
     }
 }
 

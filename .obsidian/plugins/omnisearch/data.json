@@ -6,6 +6,7 @@
   "ignoreDiacritics": true,
   "ignoreArabicDiacritics": false,
   "indexedFileTypes": [],
+  "indexFilesWithoutExtension": false,
   "displayTitle": "",
   "PDFIndexing": false,
   "officeIndexing": false,
@@ -13,7 +14,6 @@
   "aiImageIndexing": false,
   "unsupportedFilesIndexing": "default",
   "splitCamelCase": false,
-  "openInNewPane": false,
   "vimLikeNavigationShortcut": false,
   "ribbonIcon": true,
   "showExcerpt": true,
@@ -38,5 +38,6 @@
   "welcomeMessage": "1.21.0",
   "verboseLogging": false,
   "DANGER_httpHost": null,
-  "DANGER_forceSaveCache": false
+  "DANGER_forceSaveCache": false,
+  "openInNewPane": false
 }
